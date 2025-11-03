@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neha Susan Manoj - Aspiring Product Manager & Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #a78bfa;
+            --secondary: #ec4899;
+            --accent: #fbbf24;
+            --dark: #0a0a0a;
+            --darker: #050505;
+            --light: #f8fafc;
+            --gray: #9ca3af;
+            --text-light: #e5e7eb;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(167, 139, 250, 0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section - Redesigned */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(167, 139, 250, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            animation: fadeInLeft 1s ease;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-content .greeting {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--light), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero-content .role {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hero-content .tagline {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-image-container {
+            position: relative;
+            animation: fadeInRight 1s ease;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+        }
+
+        .hero-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            animation: rotate 20s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .profile-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1f2937, #374151);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            color: var(--primary);
+            border: 5px solid var(--dark);
+            box-shadow: 0 20px 60px rgba(167, 139, 250, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-placeholder::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            to { left: 100%; }
+        }
+
+        /* To add your own photo, replace the profile-placeholder with: */
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid var(--dark);
+            box-shadow: 0 20px 60px rgba(167, 139, 250, 0.3);
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(167, 139, 250, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            bottom: 15%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 1s ease 0.6s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(167, 139, 250, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--dark);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+            background: var(--dark);
+            position: relative;
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.3), transparent);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--light), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.1), rgba(236, 72, 153, 0.1));
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.2), rgba(236, 72, 153, 0.2));
+            box-shadow: 0 10px 30px rgba(167, 139, 250, 0.2);
+        }
+
+        .stat-box .number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-box .label {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(31, 41, 55, 0.5);
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            background: rgba(31, 41, 55, 0.8);
+            box-shadow: 0 20px 40px rgba(167, 139, 250, 0.2);
+            border-color: var(--primary);
+        }
+
+        .project-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-card h3 {
+            color: var(--light);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .project-card .project-role {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .project-card p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tag {
+            background: rgba(167, 139, 250, 0.2);
+            color: var(--primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(167, 139, 250, 0.3);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-link:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid var(--dark);
+            box-shadow: 0 0 0 3px var(--primary);
+        }
+
+        .timeline-item h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .date {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .company {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--light);
+        }
+
+        .timeline-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .timeline-item li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            color: var(--gray);
+        }
+
+        .timeline-item li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: rgba(31, 41, 55, 0.5);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            transition: all 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            background: rgba(31, 41, 55, 0.8);
+            box-shadow: 0 10px 30px rgba(167, 139, 250, 0.2);
+            border-color: var(--primary);
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-category h3::before {
+            content: '●';
+            font-size: 1.5rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.2), rgba(236, 72, 153, 0.2));
+            color: var(--light);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(167, 139, 250, 0.3);
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        /* Achievements Section */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .achievement-card {
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.1), rgba(236, 72, 153, 0.1));
+            border: 1px solid rgba(167, 139, 250, 0.3);
+            padding: 1.5rem;
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.2), rgba(236, 72, 153, 0.2));
+            box-shadow: 0 10px 30px rgba(167, 139, 250, 0.3);
+        }
+
+        .achievement-card h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            color: var(--light);
+        }
+
+        .achievement-card p {
+            color: var(--gray);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-content p {
+            color: var(--gray);
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .contact-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(167, 139, 250, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--darker);
+            color: var(--gray);
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(167, 139, 250, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-image-wrapper {
+                width: 300px;
+                height: 300px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content .role {
+                font-size: 1.3rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">NSM</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="greeting">👋 Hello, I'm</div>
+                    <h1>Neha Susan Manoj</h1>
+                    <div class="role">Aspiring Product Manager & Full-Stack Developer</div>
+                    <p class="tagline">Crafting innovative solutions that drive impact at scale. Passionate about building products that matter and fostering diversity in tech. Currently pursuing M.Tech in Product Design and Management at IIIT Hyderabad.</p>
+                    <div class="cta-buttons">
+                        <a href="#contact" class="btn btn-primary">Let's Connect</a>
+                        <a href="#projects" class="btn btn-secondary">View My Work</a>
+                    </div>
+                </div>
+                <div class="hero-image-container">
+                    <div class="hero-image-wrapper">
+                        <div class="profile-placeholder">
+                            <img src="image.jpeg" alt="Neha Susan Manoj" class="profile-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Hi! I'm an Aspiring Product Manager with a unique blend of technical expertise and strategic thinking. Currently pursuing M.Tech in Product Design and Management at IIIT Hyderabad, I bring hands-on experience in program management, community engagement, and full-stack development.</p>
+                    <p>My journey spans from developing internal tools at Publicis Sapient to empowering 300+ women entrepreneurs at Kerala Startup Mission. I'm passionate about building products that drive real impact and fostering diversity in tech.</p>
+                    <p>With a strong foundation in both product strategy and technical implementation, I bridge the gap between user needs and technical possibilities.</p>
+                </div>
+                <div class="stats">
+                    <div class="stat-box">
+                        <span class="number">15K+</span>
+                        <span class="label">Community Members Managed</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="number">300+</span>
+                        <span class="label">Entrepreneurs Supported</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="number">40+</span>
+                        <span class="label">Events Organized</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="number">8.81</span>
+                        <span class="label">CGPA (B.Tech CSE)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">🚀</div>
+                    <h3>WE Start Platform</h3>
+                    <div class="project-role">Lead Designer & Program Manager</div>
+                    <p>Designed and scaled a comprehensive resource platform serving 1000+ women-led startups, simplifying access to Kerala's innovation ecosystem.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Product Strategy</span>
+                        <span class="project-tag">Program Management</span>
+                        <span class="project-tag">Community Building</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">View Details →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">💼</div>
+                    <h3>Nissan Internal Tools</h3>
+                    <div class="project-role">Full-Stack Developer</div>
+                    <p>Developed internal tools translating cross-functional team needs into technical solutions, streamlining operational processes for enterprise clients.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Java</span>
+                        <span class="project-tag">SpringBoot</span>
+                        <span class="project-tag">React</span>
+                        <span class="project-tag">AWS</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">View Details →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">🌍</div>
+                    <h3>IBM Call for Code</h3>
+                    <div class="project-role">Team Lead & Developer</div>
+                    <p>National finalist project focusing on environmental sustainability and social impact through technology-driven solutions.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Social Impact</span>
+                        <span class="project-tag">Full-Stack</span>
+                        <span class="project-tag">Innovation</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">View Details →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">👥</div>
+                    <h3>TinkerHub Community Platform</h3>
+                    <div class="project-role">Community Manager & Strategist</div>
+                    <p>Managed 15,000+ member technical community, designing strategy and execution for 40+ large-scale technical events, driving peer learning and collaboration.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Community Growth</span>
+                        <span class="project-tag">Event Management</span>
+                        <span class="project-tag">Strategy</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">View Details →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">🎯</div>
+                    <h3>Fellowship Program Platform</h3>
+                    <div class="project-role">Product Manager Intern</div>
+                    <p>Drove product ideation and full-cycle recruitment for impact-driven fellowship programs, collaborating with NGO stakeholders like Kissan Mitra.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Product Ideation</span>
+                        <span class="project-tag">User Research</span>
+                        <span class="project-tag">Stakeholder Management</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">View Details →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">🏆</div>
+                    <h3>Award-Winning Hackathon Projects</h3>
+                    <div class="project-role">Developer & Team Lead</div>
+                    <p>Multiple winning projects across international and national hackathons including Hack Girl Summer (2nd), hack() National (1st), and Make-a-ton 2.0 (2nd).</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Innovation</span>
+                        <span class="project-tag">Rapid Prototyping</span>
+                        <span class="project-tag">Team Leadership</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">View Details →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Associate Software Development Engineer</h3>
+                    <div class="company">Publicis Sapient - Bengaluru</div>
+                    <div class="date">Feb 2024 — Aug 2025</div>
+                    <ul>
+                        <li>Spearheaded internal product development as a full-stack developer, boosting craft engagement</li>
+                        <li>Developed internal tools for the Nissan project, translating team needs into technical solutions</li>
+                        <li>Partnered with cross-functional teams to manage feature delivery and ensure alignment with project goals</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Technology Fellow - Women Entrepreneurship Development</h3>
+                    <div class="company">Kerala Startup Mission</div>
+                    <div class="date">Aug 2023 — Jan 2024</div>
+                    <ul>
+                        <li>Supported 300+ women entrepreneurs by designing and managing strategic programs</li>
+                        <li>Developed and scaled a resource platform for 1000+ women-led startups</li>
+                        <li>Owned the design and execution of WE Start Pre-Incubation Program, building a pipeline of 200+ startups</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Community Manager</h3>
+                    <div class="company">TinkerHub Foundation - Kochi</div>
+                    <div class="date">Jun 2021 — Apr 2023</div>
+                    <ul>
+                        <li>Managed a 15,000+ member technical community with 40+ large-scale events</li>
+                        <li>Drove community engagement initiatives, increasing collaboration among 3,000+ technology enthusiasts</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Product Manager Intern</h3>
+                    <div class="company">T4G Impact Tech Foundation (now aikyam fellows) - Kochi</div>
+                    <div class="date">Feb 2023 — Apr 2023</div>
+                    <ul>
+                        <li>Drove product ideation for fellowship programs and supported full-cycle recruitment processes</li>
+                        <li>Collaborated with NGO stakeholders to define requirements and deliver impact-driven projects</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Product Management</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Product Strategy</span>
+                        <span class="skill-tag">User Research</span>
+                        <span class="skill-tag">Design thinking</span>
+                        <span class="skill-tag">Notion</span>
+                        <span class="skill-tag">UI/UX Design and Wireframes</span>
+                        <span class="skill-tag">Jira</span>
+                        <span class="skill-tag">Confluence</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Technical Skills</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">SpringBoot</span>
+                        <span class="skill-tag">MERN Stack</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>DevOps & Cloud</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Jenkins</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Leadership</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Team Leadership</span>
+                        <span class="skill-tag">Public Speaking</span>
+                        <span class="skill-tag">Program Management</span>
+                        <span class="skill-tag">Community Building</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements">
+        <div class="container">
+            <h2 class="section-title">Achievements & Recognition</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <h4>🏆 AWS Certified Cloud Practitioner</h4>
+                    <p>CLF CO2 Certification</p>
+                </div>
+                <div class="achievement-card">
+                    <h4>🎓 Carolyn Leighton Scholar</h4>
+                    <p>Recognized for academic excellence</p>
+                </div>
+                <div class="achievement-card">
+                    <h4>🥇 IBM Call for Code 2021</h4>
+                    <p>National Finalist</p>
+                </div>
+                <div class="achievement-card">
+                    <h4>🥈 Envirothon International</h4>
+                    <p>2nd Place + Top 10 teams</p>
+                </div>
+                <div class="achievement-card">
+                    <h4>🥈 Hack Girl Summer 2.0</h4>
+                    <p>International 2nd Place</p>
+                </div>
+                <div class="achievement-card">
+                    <h4>🥇 hack() National Hackathon</h4>
+                    <p>1st Prize Winner</p>
+                </div>
+                <div class="achievement-card">
+                    <h4>👥 IEEE Leadership</h4>
+                    <p>Chairperson CS Student Branch</p>
+                </div>
+                <div class="achievement-card">
+                    <h4>📈 Community Impact</h4>
+                    <p>50% increase in women participation</p>
+                </div>
+                <div class="achievement-card">
+                    <h4>🎤 Mentor & Speaker</h4>
+                    <p>Mentored 300+ students</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <div class="contact-content">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;">I'm always excited to discuss product opportunities, collaborations, or just chat about tech and innovation!</p>
+                <p style="font-size: 1.1rem;"><strong style="color: var(--primary);">Email:</strong> nehasusan369@gmail.com</p>
+                <p style="font-size: 1.1rem;"><strong style="color: var(--primary);">Phone:</strong> +91 8921532457</p>
+                <p style="font-size: 1.1rem;"><strong style="color: var(--primary);">Location:</strong> Kerala, India</p>
+                <div class="contact-links">
+                    <a href="mailto:nehasusan369@gmail.com" class="contact-link" title="Email">✉</a>
+                    <a href="tel:+918921532457" class="contact-link" title="Phone">📞</a>
+                    <a href="https://linkedin.com/in/nehasusan369" class="contact-link" title="LinkedIn" target="_blank">in</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Neha Susan Manoj. Designed with passion and code ✨</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                nav.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.3)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and timeline items
+        document.querySelectorAll('.project-card, .timeline-item, .skill-category, .achievement-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
