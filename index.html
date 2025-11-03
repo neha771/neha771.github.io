@@ -465,7 +465,42 @@
             color: var(--gray);
         }
 
-        /* Projects Section */
+    
+        .education-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border-left: 3px solid var(--primary);
+            background: rgba(31, 41, 55, 0.5);
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .education-item:hover {
+            transform: translateY(-5px);
+            background: rgba(31, 41, 55, 0.8);
+            box-shadow: 0 10px 30px rgba(167, 139, 250, 0.2);
+        }
+
+        .education-item h3 {
+            color: var(--light);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .education-item .details {
+            color: var(--primary);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item .date {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+    
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -572,7 +607,7 @@
             transform: translateX(5px);
         }
 
-        /* Experience Section */
+       
         .timeline {
             position: relative;
             padding-left: 2rem;
@@ -644,7 +679,7 @@
             font-weight: bold;
         }
 
-        /* Skills Section */
+        
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -700,7 +735,7 @@
             background: linear-gradient(135deg, var(--primary), var(--secondary));
         }
 
-        /* Achievements Section */
+        
         .achievements-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -768,7 +803,7 @@
             box-shadow: 0 10px 25px rgba(167, 139, 250, 0.4);
         }
 
-        /* Footer */
+    
         footer {
             background: var(--darker);
             color: var(--gray);
@@ -777,7 +812,7 @@
             border-top: 1px solid rgba(167, 139, 250, 0.1);
         }
 
-        /* Responsive */
+       
         @media (max-width: 968px) {
             .hero-grid {
                 grid-template-columns: 1fr;
@@ -840,6 +875,7 @@
             <div class="logo">NSM</div>
             <ul>
                 <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -864,7 +900,7 @@
                     <p class="tagline">Crafting innovative solutions that drive impact at scale. Passionate about building products that matter and fostering diversity in tech. Currently pursuing M.Tech in Product Design and Management at IIIT Hyderabad.</p>
                     <div class="cta-buttons">
                         <a href="#contact" class="btn btn-primary">Let's Connect</a>
-                        <a href="#projects" class="btn btn-secondary">View My Work</a>
+                        <a href="https://drive.google.com/file/d/1WSCg6gS_Ab6nti7mDqVdMkKcU4cvHfTT/view?usp=sharing" class="btn btn-secondary" target="_blank">View Resume</a>
                     </div>
                 </div>
                 <div class="hero-image-container">
@@ -908,7 +944,22 @@
             </div>
         </div>
     </section>
-
+    
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-item">
+                <h3>M.Tech, Product Design and Management</h3>
+                <span class="details">International Institute of Information Technology, Hyderabad (IIIT -H)</span>
+                <span class="date">2025 — 2027</span>
+            </div>
+            <div class="education-item">
+                <h3>B.Tech, Computer Science and Engineering</h3>
+                <span class="details">Government Engineering College, Thrissur</span>
+                <span class="date">2019 — 2023 (CGPA: 8.81)</span>
+            </div>
+        </div>
+    </section>
     <section id="projects">
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
@@ -1171,7 +1222,7 @@
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
+        
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1185,7 +1236,7 @@
             });
         });
 
-        // Add scroll effect to navbar
+      
         let lastScroll = 0;
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
@@ -1200,7 +1251,7 @@
             lastScroll = currentScroll;
         });
 
-        // Intersection Observer for fade-in animations
+        
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1216,7 +1267,7 @@
         }, observerOptions);
 
         // Observe all cards and timeline items
-        document.querySelectorAll('.project-card, .timeline-item, .skill-category, .achievement-card').forEach(el => {
+        document.querySelectorAll('.project-card, .timeline-item, .skill-category, .achievement-card, .education-item').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
