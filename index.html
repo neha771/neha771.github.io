@@ -606,8 +606,29 @@
             color: var(--secondary);
             transform: translateX(5px);
         }
+        
+        .project-sublist {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+        font-size: 0.9rem;
+        }
 
-       
+        .project-sublist li {
+        margin: 6px 0;
+        }
+
+        .project-sublist a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 500;
+        }   
+
+        .project-sublist a:hover {
+        text-decoration: underline;
+        }
+
         .timeline {
             position: relative;
             padding-left: 2rem;
@@ -954,106 +975,129 @@
                 <span class="details">Government Engineering College, Thrissur</span>
                 <span class="date">2019 — 2023 (CGPA: 8.81)</span>
             </div>
+            <div class="education-item">
+                <h3>AISSCE ,PCMC</h3>
+                <span class="details">Good Shepherd Public School, Changanacherry</span>
+                <span class="date">2019 (Percentage: 96.2%)</span>
+            </div>
         </div>
     </section>
     <section id="projects">
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
+    
             <div class="projects-grid">
+                <!-- WE Start Program -->
                 <div class="project-card">
                     <div class="project-icon">🚀</div>
                     <h3>WE Start Program</h3>
                     <div class="project-role">Lead Designer & Program Manager</div>
-                    <p>Designed and scaled a comprehensive pre-incubation program and curated resources , serving 1000+ women-led startups, simplifying access to Kerala's innovation ecosystem.</p>
+                    <p>Designed and scaled a pre-incubation program and curated resources empowering 300+ women-led startups, simplifying access to Kerala's innovation ecosystem and resources.</p>
                     <div class="project-tags">
-                        <span class="project-tag">Product Strategy</span>
                         <span class="project-tag">Program Management</span>
+                        <span class="project-tag">Strategy</span>
+                        <span class="project-tag">User Research</span>
                         <span class="project-tag">Community Building</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://startupmission.kerala.gov.in/pages/westart_cohort1" class="project-link">View Details →</a>
+                        <a href="https://startupmission.kerala.gov.in/pages/westart_cohort1" class="project-link" target="_blank">View Details →</a>
+                        <a href="https://spice-shame-f3e.notion.site/Building-a-Women-Entrepreneurship-Development-Program-at-KSUM-13d34d54f88142f0b88d49c408f6c838" class="project-link" target="_blank">Read Story →</a>
+                    
                     </div>
                 </div>
 
-                <!-- <div class="project-card">
-                    <div class="project-icon">💼</div>
-                    <h3>Nissan Internal Tools</h3>
-                    <div class="project-role">Full-Stack Developer</div>
-                    <p>Developed internal tools translating cross-functional team needs into technical solutions, streamlining operational processes for enterprise clients.</p>
+                 <!-- Hackathon Projects Section -->
+                 <div class="project-card">
+                    <div class="project-icon">🏆</div>
+                    <h3>Award-Winning Hackathon Projects</h3>
+                    <div class="project-role">Developer & Lead Product Designer</div>
+                    <p>Built innovative prototypes that won multiple national and international hackathons for their impact, creativity, and usability.</p>
                     <div class="project-tags">
-                        <span class="project-tag">Java</span>
-                        <span class="project-tag">SpringBoot</span>
-                        <span class="project-tag">React</span>
-                        <span class="project-tag">AWS</span>
+                        <span class="project-tag">Rapid Prototyping</span>
+                        <span class="project-tag">Product Innovation</span>
+                        <span class="project-tag">Team Leadership</span>
                     </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">View Details →</a>
-                    </div>
-                </div> -->
-
+                    <ul class="project-sublist">
+                        <li><strong>Indah</strong> – Platform for differently abled • <a href="https://devpost.com/software/indah" target="_blank">View</a></li>
+                        <li><strong>Ecotopia</strong> – Sustainability-focused community app • <a href="https://devpost.com/software/ecotopia-acus9o" target="_blank">View</a></li>
+                        <li><strong>Viva la Vulva</strong> – All in one menstrual health platform for women • <a href="https://devpost.com/software/viva-la-vulva" target="_blank">View</a></li>
+                        <li><strong>Pranaah</strong> – The mental health app • <a href="https://devfolio.co/projects/pranah-6099" target="_blank">View</a></li>
+                    </ul>
+                </div>
+    
+                <!-- IBM Call for Code -->
                 <div class="project-card">
                     <div class="project-icon">🌍</div>
                     <h3>IBM Call for Code</h3>
-                    <div class="project-role">Product Lead & Team Member</div>
-                    <p>Ecotopia - National finalist project focusing on environmental sustainability and social impact through technology-driven solutions.</p>
+                    <div class="project-role">Product Lead & Developer</div>
+                    <p><strong>Ecotopia</strong> — National finalist(India) project promoting world’s sustainability issues with tech.</p>
                     <div class="project-tags">
                         <span class="project-tag">Social Impact</span>
-                        <span class="project-tag">Full-Stack</span>
-                        <span class="project-tag">Innovation</span>
+                        <span class="project-tag">Full Stack Development</span>
+                        <span class="project-tag">Product Innovation</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://developer.ibm.com/callforcode/solutions/2021-solutions/#regionalfinalists" class="project-link">View Details →</a>
+                        <a href="https://developer.ibm.com/callforcode/solutions/2021-solutions/#regionalfinalists" class="project-link" target="_blank">View Details →</a>
                     </div>
                 </div>
 
-                <!-- <div class="project-card">
-                    <div class="project-icon">👥</div>
-                    <h3>TinkerHub Community Platform</h3>
-                    <div class="project-role">Community Manager & Strategist</div>
-                    <p>Managed 15,000+ member technical community, designing strategy and execution for 40+ large-scale technical events, driving peer learning and collaboration.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">Community Growth</span>
-                        <span class="project-tag">Event Management</span>
-                        <span class="project-tag">Strategy</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">View Details →</a>
-                    </div>
-                </div> -->
-
-                <!-- <div class="project-card">
-                    <div class="project-icon">🎯</div>
-                    <h3>Fellowship Program Platform</h3>
-                    <div class="project-role">Product Manager Intern</div>
-                    <p>Drove product ideation and full-cycle recruitment for impact-driven fellowship programs, collaborating with NGO stakeholders like Kissan Mitra.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">Product Ideation</span>
-                        <span class="project-tag">User Research</span>
-                        <span class="project-tag">Stakeholder Management</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link">View Details →</a>
-                    </div>
-                </div> -->
-
+            
+    
+                <!-- Hack@Arch -->
                 <div class="project-card">
-                    <div class="project-icon">🏆</div>
-                    <h3>Award-Winning Hackathon Projects</h3>
-                    <div class="project-role">Developer & Team Lead</div>
-                    <p>Multiple winning projects across international and national hackathons including Hack Girl Summer (2nd), hack() National (1st), and Make-a-ton 2.0 (2nd).</p>
+                    <div class="project-icon">💡</div>
+                    <h3>Hack@Arch</h3>
+                    <div class="project-role">Organizer & Lead Strategist</div>
+                    <p>Kerala’s largest offline student-led hackathon post-COVID. Led a 100+ member team, raised ₹2L+ in sponsorships, and designed a model later adopted for national events in Kerala.</p>
                     <div class="project-tags">
-                        <span class="project-tag">Innovation</span>
-                        <span class="project-tag">Rapid Prototyping</span>
-                        <span class="project-tag">Team Leadership</span>
+                        <span class="project-tag">Event Management</span>
+                        <span class="project-tag">Leadership</span>
+                        <span class="project-tag">Community Building</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link">View Details →</a>
+                        <a href="https://medium.com/@nehasusan369/from-ideation-to-implementation-my-journey-of-organizing-a-hackathon-from-scratch-bb8e4f8208f5" class="project-link" target="_blank">Read Story →</a>
                     </div>
+                </div>
+    
+               
+
+                <!-- Case Studies Section -->
+                <div class="project-card">
+                    <div class="project-icon">📄</div>
+                    <h3>Case Studies and Product Teardowns</h3>
+                    <div class="project-role"> </div>
+                    <p></p>
+                    <div class="project-tags">
+                        <span class="project-tag">Design Thinking</span>
+                        <span class="project-tag">Product Management</span>
+                        <span class="project-tag">Market Research and Analysis</span>
+                    </div>
+                    <ul class="project-sublist">
+                        <li><strong>Instagram - PMF Presentaion</strong> <a href="https://www.canva.com/design/DAGzHc6y5ho/YSE1gPugSj6HgSdPTyUaNQ/view?utm_content=DAGzHc6y5ho&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hd19b5a4fa1" target="_blank">View</a></li>
+                        <li><strong>Zerodha - Product Strategy Presentation</strong> <a href="https://www.canva.com/design/DAG0WQk_icc/1CpRrfeQny5awClTrFDOlg/view?utm_content=DAG0WQk_icc&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hfe8654a15b" target="_blank">View</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Academic Projects -->
+                <div class="project-card">
+                    <div class="project-icon">📚</div>
+                    <h3>Academic Projects</h3>
+                    <div class="project-role">Developer & Researcher</div>
+                    <p>Built innovative academic projects blending technology and user experience to solve educational and social challenges.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Software Development</span>
+                        <span class="project-tag">Research</span>
+                        <span class="project-tag">UI/UX</span>
+                    </div>
+                    <ul class="project-sublist">
+                        <li><strong>Vidya Vichar</strong> –Interactive classroom Q&A system • <a href="https://github.com/Ishaan-Giri/VidyaVichar.git" target="_blank">View</a></li>
+                        <li><strong>SkillSwap</strong> – Skill-exchange web app • <a href="https://github.com/neha771/SkillSwap.git" target="_blank">View</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <section id="experience">
         <div class="container">
             <h2 class="section-title">Experience</h2>
