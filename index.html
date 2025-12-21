@@ -136,6 +136,7 @@
         .hero-content {
             animation: fadeInLeft 1s ease;
         }
+        
 
         @keyframes fadeInLeft {
             from {
@@ -219,6 +220,39 @@
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
+
+/* HERO AVAILABILITY BADGE — MATCHING PURPLE HERO */
+.availability-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+
+  color: #e9d5ff; /* soft lavender text */
+
+  background: linear-gradient(
+    135deg,
+    rgba(167, 139, 250, 0.18),
+    rgba(236, 72, 153, 0.18)
+  );
+
+  border: 1px solid rgba(167, 139, 250, 0.35);
+
+  backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 0 0 1px rgba(236, 72, 153, 0.15),
+    0 8px 24px rgba(167, 139, 250, 0.25);
+
+  margin-bottom: 1.4rem;
+}
+
 
         .profile-placeholder {
             width: 100%;
@@ -823,6 +857,122 @@
             transform: translateY(-5px) scale(1.1);
             box-shadow: 0 10px 25px rgba(167, 139, 250, 0.4);
         }
+        /* === IMAGE-BASED PROJECT CARDS === */
+
+.projects-subtitle {
+    text-align: center;
+    color: var(--gray);
+    margin-bottom: 2.5rem;
+}
+
+.project-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.filter-btn {
+    padding: 0.6rem 1.5rem;
+    border-radius: 14px;
+    background: transparent;
+    color: var(--text-light);
+    border: 1px solid rgba(255,255,255,0.25);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: white;
+    color: black;
+}
+
+.image-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.image-project-card {
+    position: relative;
+    height: 380px;
+    border-radius: 22px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.image-project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+}
+
+.image-project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+}
+
+.image-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.8rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent 60%);
+}
+
+.image-overlay h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.6rem;
+}
+
+.image-overlay p {
+    font-size: 0.95rem;
+    color: var(--gray);
+    margin-bottom: 0.8rem;
+}
+.project-meta {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.75);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.8rem;
+}
+
+.project-meta strong {
+  color: white;
+  font-weight: 600;
+}
+
+
+
+.project-pill {
+    display: inline-block;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.15);
+    width: fit-content;
+}
+
+.image-overlay a {
+    color: white;
+    font-weight: 600;
+    margin-top: 0.8rem;
+    text-decoration: none;
+}
+
+.image-overlay a:hover {
+    color: var(--secondary);
+}
+
 
     
         footer {
@@ -915,6 +1065,9 @@
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-content">
+                        <div class="availability-badge">
+                         Open to Product Related Roles ✨
+                        </div>
                     <div class="greeting">👋 Hello, I'm</div>
                     <h1>Neha Susan Manoj</h1>
                     <div class="role">A Product Thinker Who Builds! </div>
@@ -922,7 +1075,9 @@
                     <div class="cta-buttons">
                         <a href="#contact" class="btn btn-primary">Let's Connect</a>
                         <a href="https://drive.google.com/drive/folders/1-29jxZ1Bmcezz1jgA6Lh9IOsGdxfpy07?usp=sharing" class="btn btn-secondary" target="_blank">View Resume</a>
+                        
                     </div>
+                    
                 </div>
                 <div class="hero-image-container">
                     <div class="hero-image-wrapper">
@@ -1032,122 +1187,160 @@
     </section>
     <section id="projects">
         <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-    
-            <div class="projects-grid">
-                <!-- WE Start Program -->
-                <div class="project-card">
-                    <div class="project-icon">🚀</div>
-                    <h3>WE Start Program</h3>
-                    <div class="project-role">Lead Designer & Program Manager</div>
-                    <p>Designed and scaled a pre-incubation program and curated resources empowering 300+ women-led startups, simplifying access to Kerala's innovation ecosystem and resources.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">Program Management</span>
-                        <span class="project-tag">Strategy</span>
-                        <span class="project-tag">User Research</span>
-                        <span class="project-tag">Community Building</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://startupmission.kerala.gov.in/pages/westart_cohort1" class="project-link" target="_blank">View Details →</a>
-                        <a href="https://spice-shame-f3e.notion.site/Building-a-Women-Entrepreneurship-Development-Program-at-KSUM-13d34d54f88142f0b88d49c408f6c838" class="project-link" target="_blank">Read Story →</a>
-                    
-                    </div>
-                </div>
-
-                 <!-- Hackathon Projects Section -->
-                 <div class="project-card">
-                    <div class="project-icon">🏆</div>
-                    <h3>Award-Winning Hackathon Projects</h3>
-                    <div class="project-role">Developer & Lead Product Designer</div>
-                    <p>Built innovative prototypes that won multiple national and international hackathons for their impact, creativity, and usability.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">Rapid Prototyping</span>
-                        <span class="project-tag">Product Innovation</span>
-                        <span class="project-tag">Team Leadership</span>
-                    </div>
-                    <ul class="project-sublist">
-                        <li><strong>Indah</strong> – Platform for differently abled • <a href="https://devpost.com/software/indah" target="_blank">View</a></li>
-                        <li><strong>Ecotopia</strong> – Sustainability-focused community app • <a href="https://devpost.com/software/ecotopia-acus9o" target="_blank">View</a></li>
-                        <li><strong>Viva la Vulva</strong> – All in one menstrual health platform for women • <a href="https://devpost.com/software/viva-la-vulva" target="_blank">View</a></li>
-                        <li><strong>Pranaah</strong> – The mental health app • <a href="https://devfolio.co/projects/pranah-6099" target="_blank">View</a></li>
-                    </ul>
-                </div>
-                <!-- Academic Projects -->
-                <div class="project-card">
-                    <div class="project-icon">📚</div>
-                    <h3>Projects and Case Studies</h3>
-                    <div class="project-role">Product Thinker, Researcher and Developer</div>
-                    <p>Built innovative academic projects blending technology and user experience to solve educational and social challenges.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">Full Stack Development</span>
-                        <span class="project-tag">User Research</span>
-                        <span class="project-tag">Design Thinking</span>
-                        <span class="project-tag">UI/UX (Figma)</span>
-                    </div>
-                    <ul class="project-sublist">
-                        <li><strong>Design Thinking Project • </strong><a href="https://drive.google.com/file/d/1Wb3ZXYt-Vw4KUOSokVyeIzdDtD68FGi9/view?usp=sharing" target="_blank">View</a></li>
-                        <li><strong>User Research Methods Project • </strong><a href="https://drive.google.com/file/d/19n12xb1Io1uN-WviCQYlIfzH3ArvzFib/view?usp=sharing" target="_blank">View</a></li>
-                        <li><strong>SkillSwap</strong> – Skill-exchange web app • <a href="https://drive.google.com/file/d/1dPdX8xhUIIbWTVMqVriklOKalOiFoW-j/view?usp=sharing" target="_blank">View</a></li>       
-                        <li><strong>Vidya Vichar</strong> –Interactive classroom Q&A system • <a href="https://github.com/Ishaan-Giri/VidyaVichar.git" target="_blank">View</a></li>
-                        </ul>
-                </div>
-    
-                <!-- IBM Call for Code -->
-                <div class="project-card">
-                    <div class="project-icon">🌍</div>
-                    <h3>IBM Call for Code</h3>
-                    <div class="project-role">Product Lead & Developer</div>
-                    <p><strong>Ecotopia</strong> — National finalist(India) project promoting world’s sustainability issues with tech.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">Social Impact</span>
-                        <span class="project-tag">Full Stack Development</span>
-                        <span class="project-tag">Product Innovation</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://developer.ibm.com/callforcode/solutions/2021-solutions/#regionalfinalists" class="project-link" target="_blank">View Details →</a>
-                    </div>
-                </div>
-
-            
-    
-                <!-- Hack@Arch -->
-                <div class="project-card">
-                    <div class="project-icon">💡</div>
-                    <h3>Hack@Arch</h3>
-                    <div class="project-role">Organizer & Lead Strategist</div>
-                    <p>Kerala’s largest offline student-led hackathon post-COVID. Led a 100+ member team, raised ₹2L+ in sponsorships, and designed a model later adopted for national events in Kerala.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">Event Management</span>
-                        <span class="project-tag">Leadership</span>
-                        <span class="project-tag">Community Building</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://medium.com/@nehasusan369/from-ideation-to-implementation-my-journey-of-organizing-a-hackathon-from-scratch-bb8e4f8208f5" class="project-link" target="_blank">Read Story →</a>
-                    </div>
-                </div>
-    
-               
-
-                <!-- Case Studies Section -->
-                <div class="project-card">
-                    <div class="project-icon">📄</div>
-                    <h3>Case Studies and Product Teardowns</h3>
-                    <div class="project-role"> </div>
-                    <p></p>
-                    <div class="project-tags">
-                        <span class="project-tag">Design Thinking</span>
-                        <span class="project-tag">Product Management</span>
-                        <span class="project-tag">Market Research and Analysis</span>
-                    </div>
-                    <ul class="project-sublist">
-                        <li><strong>Instagram - PMF Presentaion</strong> <a href="https://www.canva.com/design/DAGzHc6y5ho/YSE1gPugSj6HgSdPTyUaNQ/view?utm_content=DAGzHc6y5ho&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hd19b5a4fa1" target="_blank">View</a></li>
-                        <li><strong>Zerodha - Product Strategy Presentation</strong> <a href="https://www.canva.com/design/DAG0WQk_icc/1CpRrfeQny5awClTrFDOlg/view?utm_content=DAG0WQk_icc&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hfe8654a15b" target="_blank">View</a></li>
-                        </ul>
-                </div>
-    
+          <h2 class="section-title">Featured Projects</h2>
+          <p class="projects-subtitle">
+            A showcase of product thinking, user research, and technical execution
+          </p>
+      
+          <!-- Filters -->
+          <div class="project-filters">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="impact">Impact</button>
+            <button class="filter-btn" data-filter="product">Product & Research</button>
+            <button class="filter-btn" data-filter="hackathon">Hackathon Winning Projects</button>
+            <button class="filter-btn" data-filter="case">Case Studies</button>
+          </div>
+      
+          <div class="image-projects-grid">
+      
+            <!-- WE Start -->
+            <div class="image-project-card impact">
+              <img src="images/westart.jpg" alt="WE Start Program">
+              <div class="image-overlay">
+                <h3>WE Start Program</h3>
+                <p>Pre-incubation program empowering 300+ women-led startups</p>
+                <span class="project-pill">Program Management • Kerala Startup Mission</span>
+                  
+      
+                <a href="https://startupmission.kerala.gov.in/pages/westart_cohort1" target="_blank">View →</a>
+                <a href="https://spice-shame-f3e.notion.site/Building-a-Women-Entrepreneurship-Development-Program-at-KSUM-13d34d54f88142f0b88d49c408f6c838" target="_blank">Story →</a>
+              </div>
             </div>
+      
+            <!-- Design Thinking -->
+            <div class="image-project-card product">
+              <img src="images/design-thinking.jpg" alt="Design Thinking Project">
+              <div class="image-overlay">
+                <h3>Design Thinking Project</h3>
+                <p>A collaborative maker experience platform</p>
+                <span class="project-pill">Design Thinking • IIIT-H</span>
+                <a href="https://drive.google.com/file/d/1Wb3ZXYt-Vw4KUOSokVyeIzdDtD68FGi9/view" target="_blank">View →</a>
+              </div>
+            </div>
+      
+            <!-- User Research -->
+            <div class="image-project-card product">
+              <img src="images/urm.jpg" alt="User Research Methods">
+              <div class="image-overlay">
+                <h3>User Research Methods</h3>
+                <p>Exploring how individuals aged 18-40 share emotions with AI-based conversational tools</p>
+                <span class="project-pill">User Research • IIIT-H</span>
+                <a href="https://drive.google.com/file/d/19n12xb1Io1uN-WviCQYlIfzH3ArvzFib/view" target="_blank">View →</a>
+              </div>
+            </div>
+      
+            <!-- SkillSwap -->
+            <div class="image-project-card product">
+              <img src="images/skillswap.jpg" alt="SkillSwap">
+              <div class="image-overlay">
+                <h3>SkillSwap</h3>
+                <p>Peer-to-peer skill exchange web app</p>
+                <span class="project-pill">Full Stack Development • Product Thinking </span>
+                <a href="https://drive.google.com/file/d/1dPdX8xhUIIbWTVMqVriklOKalOiFoW-j/view" target="_blank">View →</a>
+              </div>
+            </div>
+      
+            <!-- Vidya Vichar -->
+            <div class="image-project-card product">
+              <img src="images/vidyavichar.jpg" alt="Vidya Vichar">
+              <div class="image-overlay">
+                <h3>Vidya Vichar</h3>
+                <p>Interactive classroom Q&A system</p>
+                <span class="project-pill">Full Stack Development • Product Thinking</span>
+                <a href="https://github.com/Ishaan-Giri/VidyaVichar.git" target="_blank">View →</a>
+              </div>
+            </div>
+      
+            <!-- Indah -->
+            <div class="image-project-card hackathon">
+              <img src="images/indah.jpg" alt="Indah">
+              <div class="image-overlay">
+                <h3>Indah</h3>
+                <p>Accessibility platform for differently-abled users</p>
+                <span class="project-pill">Accessibility • Hackathon</span>
+                <a href="https://devpost.com/software/indah" target="_blank">View →</a>
+              </div>
+            </div>
+      
+            <!-- Ecotopia -->
+            <div class="image-project-card hackathon">
+              <img src="images/ecotopia.jpg" alt="Ecotopia">
+              <div class="image-overlay">
+                <h3>Ecotopia</h3>
+                <p>IBM Call for Code 2021 National Finalist Project</p>
+                <span class="project-pill">Sustainability • Product Thinking</span>
+                <a href="https://devpost.com/software/ecotopia-acus9o" target="_blank">View →</a>
+                <a href="https://developer.ibm.com/callforcode/solutions/2021-solutions/#regionalfinalists" target="_blank">IBM Call for Code →</a>
+              </div>
+            </div>
+      
+            <!-- Viva La Vulva -->
+            <div class="image-project-card hackathon">
+              <img src="images/viva-la-vulva.jpg" alt="Viva La Vulva">
+              <div class="image-overlay">
+                <h3>Viva La Vulva</h3>
+                <p>Menstrual health and awareness platform</p>
+                <span class="project-pill">HealthTech • Product Thinking</span>
+                <a href="https://devpost.com/software/viva-la-vulva" target="_blank">View →</a>
+              </div>
+            </div>
+      
+            <!-- Pranaah -->
+            <div class="image-project-card hackathon">
+              <img src="images/pranaah.png" alt="Pranaah">
+              <div class="image-overlay">
+                <h3>Pranaah</h3>
+                <p>Mental health support application</p>
+                <span class="project-pill">Mental Health • Product Thinking</span>
+                <a href="https://devfolio.co/projects/pranah-6099" target="_blank">View →</a>
+              </div>
+            </div>
+      
+            <!-- Hack@Arch -->
+            <div class="image-project-card impact">
+              <img src="images/hackatarch.jpg" alt="Hack@Arch">
+              <div class="image-overlay">
+                <h3>Hack@Arch</h3>
+                <p>Kerala’s largest offline student-led hackathon post covid</p>
+                <span class="project-pill">Leadership • Community</span>
+                <a href="https://medium.com/@nehasusan369/from-ideation-to-implementation-my-journey-of-organizing-a-hackathon-from-scratch-bb8e4f8208f5" target="_blank">Read →</a>
+              </div>
+            </div>
+      
+            <!-- Instagram PMF -->
+            <div class="image-project-card case">
+              <img src="images/instagram-pmf.jpg" alt="Instagram PMF">
+              <div class="image-overlay">
+                <h3>Instagram – PMF Case Study</h3>
+                <span class="project-pill">Product Strategy • PMF</span>
+                <a href="https://www.canva.com/design/DAGzHc6y5ho/YSE1gPugSj6HgSdPTyUaNQ/view" target="_blank">View →</a>
+              </div>
+            </div>
+      
+            <!-- Zerodha -->
+            <div class="image-project-card case">
+              <img src="images/zerodha.jpg" alt="Zerodha Strategy">
+              <div class="image-overlay">
+                <h3>Zerodha – Product Strategy</h3>
+                <span class="project-pill">Market Analysis • Product Strategy</span>
+                <a href="https://www.canva.com/design/DAG0WQk_icc/1CpRrfeQny5awClTrFDOlg/view" target="_blank">View →</a>
+              </div>
+            </div>
+      
+          </div>
         </div>
-    </section>
+      </section>
+      
     
     
 
@@ -1317,6 +1510,28 @@
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(el);
         });
+        const filterButtons = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.image-project-card');
+
+filterButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+
+    // active state
+    filterButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filter = btn.dataset.filter;
+
+    projectCards.forEach(card => {
+      if (filter === 'all' || card.classList.contains(filter)) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+  });
+});
     </script>
 </body>
 </html>
