@@ -1,0 +1,6 @@
+@keyframes orbdrift{0%{transform:translate(0,0)}33%{transform:translate(40px,30px)}66%{transform:translate(-30px,20px)}100%{transform:translate(0,0)}}
+@keyframes emrise{0%{transform:translateY(0) scale(1);opacity:0}10%{opacity:.8}90%{opacity:.5}100%{transform:translateY(-110vh) scale(.3);opacity:0}}
+@keyframes sway{0%,100%{transform:rotate(-1.4deg) translateY(0)}50%{transform:rotate(1.4deg) translateY(-9px)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes blossom{from{opacity:0;transform:scale(.93) translateY(14px)}to{opacity:1;transform:scale(1) translateY(0)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
