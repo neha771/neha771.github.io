@@ -137,15 +137,8 @@ function renderItem(item: DeskItemData, theme: Theme) {
       const meta = f.subfolders ? `${ct} folders` : `${ct} items`;
       return (
         <>
-          <div
-            className="folder"
-            style={{ '--f1': colors.f1, '--f2': colors.f2, '--ftab': colors.tab } as React.CSSProperties}
-          >
-            <div className="back" />
-            <div className="tab" />
-            <div className="front">
-              <span className="em">{f.em}</span>
-            </div>
+          <div className="folder" style={{ '--f1': colors.f1, '--f2': colors.f2 } as React.CSSProperties}>
+            <span className="em">{f.em}</span>
             <div className="ct">{ct}</div>
           </div>
           <div className="desk-label">{f.name}</div>

@@ -58,21 +58,18 @@ body{
 .desk-label{font-family:var(--f-disp);font-weight:600;color:var(--ink);font-size:1.12rem;letter-spacing:.01em;text-align:center}
 .desk-meta{font-size:.7rem;color:var(--ink-soft);letter-spacing:.14em;text-transform:uppercase;margin-top:-4px;font-weight:600}
 
-/* ── folder ── */
-.folder{position:relative;width:104px;height:84px;filter:drop-shadow(0 12px 22px rgba(0,0,0,.5))}
-.folder .back{position:absolute;inset:0;top:10px;border-radius:16px;background:rgba(255,255,255,.05)}
-.folder .tab{position:absolute;top:0;left:11px;width:46px;height:19px;border-radius:11px 11px 0 0;
-  background:var(--ftab);box-shadow:inset 0 1px 0 rgba(255,255,255,.25)}
-.folder .front{position:absolute;left:0;right:0;bottom:0;top:15px;border-radius:15px;
+/* ── folder (flat rounded-square icon) ── */
+.folder{position:relative;width:92px;height:92px;border-radius:22px;
   background:linear-gradient(155deg,var(--f1),var(--f2));
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 6px 14px rgba(0,0,0,.4);overflow:hidden}
-.folder .front::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.12),transparent 50%)}
-.folder .em{font-size:1.95rem;transform:translateY(1px);filter:drop-shadow(0 2px 4px rgba(0,0,0,.3));position:relative;z-index:1}
-.folder .ct{position:absolute;top:-8px;right:-8px;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+  box-shadow:0 10px 24px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.24)}
+.folder::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.10),transparent 55%)}
+.folder .em{font-size:2.1rem;position:relative;z-index:1;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3))}
+.folder .ct{position:absolute;top:-6px;right:-6px;
   background:linear-gradient(150deg,var(--gold-2),var(--gold-d));border-radius:50%;
-  width:24px;height:24px;display:flex;align-items:center;justify-content:center;
-  font-size:.7rem;font-weight:800;color:#1a140a;box-shadow:0 4px 10px rgba(0,0,0,.4);font-family:var(--f-ui)}
+  width:23px;height:23px;display:flex;align-items:center;justify-content:center;
+  font-size:.68rem;font-weight:800;color:#1a140a;box-shadow:0 4px 10px rgba(0,0,0,.4);font-family:var(--f-ui);
+  border:2px solid var(--bg)}
 
 /* ── intro cards (notes) ── */
 .note{width:228px;padding:20px 20px 22px;position:relative;overflow:hidden;
