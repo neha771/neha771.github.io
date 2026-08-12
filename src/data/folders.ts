@@ -13,6 +13,12 @@ import imgVivaLaVulva from '../assets/images/viva-la-vulva.jpg';
 import imgPranaah from '../assets/images/pranaah.png';
 import imgWestart from '../assets/images/westart.jpg';
 import imgHackatarch from '../assets/images/hackatarch.jpg';
+import imgBuildFromHome from '../assets/images/build-from-home.svg';
+import imgTownhalls from '../assets/images/townhalls.svg';
+import imgCoCoder from '../assets/images/co-coder.svg';
+import imgTinkerday from '../assets/images/tinkerday.webp';
+import imgDevfest from '../assets/images/devfest.webp';
+import imgMeetup from '../assets/images/meetup.webp';
 
 export interface FolderFile {
   ico: string;
@@ -105,6 +111,18 @@ export const FOLDERS: Record<FolderKey, FolderDef> = {
     files: [
       { ico: '👩‍💼', title: 'WE Start Program', desc: 'Designed & ran a 0→1 pre-incubation program supporting 200+ women-led startups across Kerala at Kerala Startup Mission.', tags: ['Program Mgmt', 'DEI', 'KSUM'], link: 'https://startupmission.kerala.gov.in/pages/westart_cohort1', story: 'https://spice-shame-f3e.notion.site/Building-a-Women-Entrepreneurship-Development-Program-at-KSUM-13d34d54f88142f0b88d49c408f6c838', img: imgWestart },
       { ico: '🏗️', title: 'Hack@Arch', desc: "Kerala's largest offline student-led hackathon post-covid — conceptualized and led end-to-end from scratch.", tags: ['Leadership', 'Community', 'Events'], link: 'https://medium.com/@nehasusan369/from-ideation-to-implementation-my-journey-of-organizing-a-hackathon-from-scratch-bb8e4f8208f5', img: imgHackatarch },
+      { ico: '💘', title: 'Co-Coder', sub: 'My own concept · Valentine\'s Day edition',
+        desc: 'An idea I originated: randomly match two strangers and have them build a product together — Tinder, but for shipping. Turned a Valentine\'s gimmick into real collaboration between people who had never met.', tags: ['0→1 Concept', 'Community', 'Collaboration'], img: imgCoCoder },
+      { ico: '🛠️', title: 'TinkerDays', sub: 'TinkerHub · Kannur, Kochi, Kottayam, Kozhikode & Thrissur',
+        desc: 'Community meetups taken deliberately outside the metros so people across Kerala could get hands-on with technology. Personally organized five editions, each built around making rather than talks.', tags: ['Community', 'Events', 'Kerala'], img: imgTinkerday },
+      { ico: '🏠', title: 'Build From Home', sub: 'TinkerHub · COVID-19 lockdown',
+        desc: 'A 14-day remote build challenge born out of lockdown — participants picked a track, learned it, and shipped a working product by day 14. Contributed to the ideation and ran the organizing side.', tags: ['Ideation', 'Remote Program', 'Learn by Building'], img: imgBuildFromHome },
+      { ico: '🌐', title: 'DevFest Kochi', sub: 'Google Developer Groups · Organizing committee',
+        desc: 'Part of the core organizing committee and on-stage host for Google\'s flagship community festival in Kochi.', tags: ['Google', 'Events', 'Hosting'], img: imgDevfest },
+      { ico: '🎙️', title: 'Townhalls', sub: 'TinkerHub · Online community gatherings',
+        desc: 'Recurring online gatherings mixing tech discussions with games and prizes — a low-pressure space that brought in women in tech and first-timers alongside the regulars.', tags: ['Community', 'Women in Tech', 'Online'], img: imgTownhalls },
+      { ico: '🧑‍🏫', title: 'Meetup Mentoring', sub: 'Colleges & community events across Kerala',
+        desc: 'Regular mentor at student meetups and campus sessions — guiding girls in particular through product management, UI/UX design and getting started in tech.', tags: ['Mentorship', 'DEI', 'Product & Design'], img: imgMeetup },
     ],
   },
   leadership: {

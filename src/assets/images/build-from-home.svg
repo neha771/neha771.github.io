@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400">
+  <defs>
+    <linearGradient id="bfhBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22304f"/>
+      <stop offset="1" stop-color="#3f5e96"/>
+    </linearGradient>
+    <linearGradient id="bfhGold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f2dda9"/>
+      <stop offset="1" stop-color="#d3a74d"/>
+    </linearGradient>
+    <radialGradient id="bfhGlow" cx="0.5" cy="0.4" r="0.62">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.15"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="bfhDots" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.3" fill="#ffffff" opacity="0.09"/>
+    </pattern>
+  </defs>
+
+  <rect width="640" height="400" fill="url(#bfhBg)"/>
+  <rect width="640" height="400" fill="url(#bfhDots)"/>
+  <rect width="640" height="400" fill="url(#bfhGlow)"/>
+
+  <!-- house -->
+  <g>
+    <path d="M320 92 L446 188 L194 188 Z" fill="#ffffff" opacity="0.10"/>
+    <path d="M320 92 L446 188 L194 188 Z" fill="none" stroke="url(#bfhGold)" stroke-width="4"
+          stroke-linejoin="round" opacity="0.9"/>
+    <rect x="232" y="184" width="176" height="120" rx="9" fill="#ffffff" opacity="0.09"/>
+    <rect x="232" y="184" width="176" height="120" rx="9" fill="none"
+          stroke="url(#bfhGold)" stroke-width="4" opacity="0.9"/>
+
+    <!-- window panes, two of them lit -->
+    <rect x="252" y="202" width="56" height="38" rx="5" fill="url(#bfhGold)" opacity="0.92"/>
+    <rect x="332" y="202" width="56" height="38" rx="5" fill="#ffffff" opacity="0.16"/>
+    <rect x="252" y="252" width="56" height="38" rx="5" fill="#ffffff" opacity="0.16"/>
+    <rect x="332" y="252" width="56" height="38" rx="5" fill="url(#bfhGold)" opacity="0.92"/>
+  </g>
+
+  <!-- 14 days -->
+  <g>
+    <circle cx="160" cy="345" r="5" fill="#ffffff" opacity="0.20"/>
+    <circle cx="184" cy="345" r="5" fill="#ffffff" opacity="0.24"/>
+    <circle cx="209" cy="345" r="5" fill="#ffffff" opacity="0.28"/>
+    <circle cx="234" cy="345" r="5" fill="#ffffff" opacity="0.32"/>
+    <circle cx="258" cy="345" r="5" fill="#ffffff" opacity="0.36"/>
+    <circle cx="283" cy="345" r="5" fill="#ffffff" opacity="0.41"/>
+    <circle cx="308" cy="345" r="5" fill="#ffffff" opacity="0.46"/>
+    <circle cx="332" cy="345" r="5" fill="#ffffff" opacity="0.52"/>
+    <circle cx="357" cy="345" r="5" fill="#ffffff" opacity="0.58"/>
+    <circle cx="382" cy="345" r="5" fill="#ffffff" opacity="0.64"/>
+    <circle cx="406" cy="345" r="5" fill="#ffffff" opacity="0.72"/>
+    <circle cx="431" cy="345" r="5.5" fill="url(#bfhGold)" opacity="0.78"/>
+    <circle cx="456" cy="345" r="6" fill="url(#bfhGold)" opacity="0.9"/>
+    <circle cx="480" cy="345" r="7.5" fill="url(#bfhGold)"/>
+  </g>
+</svg>

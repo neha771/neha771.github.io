@@ -15,26 +15,26 @@ const THEME_VARS: Record<Theme, Record<string, string>> = {
     '--ruby': '#d77392', '--topaz': '#d8ab53', '--teal': '#46b0a8',
   },
   light: {
-    '--bg': '#fefaf8', '--bg2': '#f9f2ff', '--panel': '#ffffff', '--panel-2': '#fef4fb', '--card': '#f5eeff',
-    '--line': 'rgba(200,120,200,.22)', '--line-soft': 'rgba(150,100,180,.13)',
-    '--ink': '#2a1d3a', '--ink-mid': '#6b5080', '--ink-soft': '#b09ab8',
-    '--gold': '#c050a0', '--gold-2': '#de80c8', '--gold-d': '#a03080',
-    '--emerald': '#20a87a', '--sapphire': '#4a80d0', '--amethyst': '#9060d0',
-    '--ruby': '#d05080', '--topaz': '#c08030', '--teal': '#30a0a8',
+    '--bg': '#eaf2fa', '--bg2': '#dceaf6', '--panel': '#ffffff', '--panel-2': '#f7f6f2', '--card': '#f1f1ef',
+    '--line': 'rgba(34,34,32,.14)', '--line-soft': 'rgba(34,34,32,.07)',
+    '--ink': '#232322', '--ink-mid': '#5b5b57', '--ink-soft': '#8d8d87',
+    '--gold': '#8a6b1c', '--gold-2': '#d7b13f', '--gold-d': '#6b520f',
+    '--emerald': '#2f8f6b', '--sapphire': '#3f77b8', '--amethyst': '#7a5fae',
+    '--ruby': '#b85570', '--topaz': '#b8892c', '--teal': '#2f8f8a',
   },
 };
 
-// Light-mode folder colours (pastel jewels) — keyed by FolderKey.
+// Light-mode folder colours (muted sand / sky / sage) — keyed by FolderKey.
 export const LIGHT_FOLDER_COLORS: Record<string, { f1: string; f2: string; tab: string }> = {
-  experience: { f1: '#e8d0ff', f2: '#c8a0f0', tab: '#b080e0' },
-  hackathons: { f1: '#ffd0e0', f2: '#ffb0c8', tab: '#f080a8' },
-  impact: { f1: '#ffe4cc', f2: '#ffbf90', tab: '#f0986a' },
-  projects: { f1: '#c8d8ff', f2: '#a0c0f8', tab: '#6898e8' },
-  productResearch: { f1: '#c8d8ff', f2: '#a0c0f8', tab: '#6898e8' },
-  achievements: { f1: '#e0d0ff', f2: '#c0a8f0', tab: '#a880e0' },
-  leadership: { f1: '#ffe8c0', f2: '#ffd090', tab: '#f0a840' },
-  education: { f1: '#c8f0e0', f2: '#90d8c0', tab: '#58b898' },
-  skills: { f1: '#c8f0f8', f2: '#90d8e8', tab: '#50b8d8' },
+  experience: { f1: '#ece8de', f2: '#d2caba', tab: '#b9ae99' },
+  hackathons: { f1: '#f6e4d6', f2: '#eccbb0', tab: '#dcae8a' },
+  impact: { f1: '#fdf1c6', f2: '#f6dd90', tab: '#e8c45c' },
+  projects: { f1: '#dbe9f7', f2: '#b0cce9', tab: '#8ab3dc' },
+  productResearch: { f1: '#dbe9f7', f2: '#b0cce9', tab: '#8ab3dc' },
+  achievements: { f1: '#e2eaed', f2: '#bfcfd7', tab: '#9fb5c0' },
+  leadership: { f1: '#f9ecd0', f2: '#efd6a0', tab: '#ddb96a' },
+  education: { f1: '#dcece2', f2: '#b4d6c4', tab: '#8dbfa4' },
+  skills: { f1: '#dceaea', f2: '#b2d3d3', tab: '#8bbcbc' },
 };
 
 function applyVars(theme: Theme) {

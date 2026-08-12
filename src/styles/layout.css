@@ -260,7 +260,7 @@ body{
 
 /* mobile topbar light */
 @media(max-width:860px){
-  :root[data-theme="light"] .topbar{background:rgba(254,248,255,.94);border-bottom-color:rgba(180,120,220,.2)}
+  :root[data-theme="light"] .topbar{background:rgba(252,251,248,.94);border-bottom-color:rgba(34,34,32,.12)}
 }
 
 /* light mode — no !important overrides needed; all token swaps are done via JS applyVars */

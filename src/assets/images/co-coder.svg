@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400">
+  <defs>
+    <linearGradient id="ccBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#452534"/>
+      <stop offset="1" stop-color="#823d54"/>
+    </linearGradient>
+    <linearGradient id="ccGold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f2dda9"/>
+      <stop offset="1" stop-color="#d3a74d"/>
+    </linearGradient>
+    <radialGradient id="ccGlow" cx="0.5" cy="0.45" r="0.6">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="ccDots" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.3" fill="#ffffff" opacity="0.08"/>
+    </pattern>
+  </defs>
+
+  <rect width="640" height="400" fill="url(#ccBg)"/>
+  <rect width="640" height="400" fill="url(#ccDots)"/>
+  <rect width="640" height="400" fill="url(#ccGlow)"/>
+
+  <!-- the random match: dashed link between two strangers -->
+  <path d="M186 196 C 240 128, 400 128, 454 196" fill="none" stroke="#ffffff" stroke-width="3"
+        stroke-linecap="round" stroke-dasharray="3 13" opacity="0.42"/>
+
+  <!-- left coder -->
+  <g>
+    <circle cx="150" cy="200" r="52" fill="#ffffff" opacity="0.11"/>
+    <circle cx="150" cy="200" r="52" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.3"/>
+    <path d="M162 176 L134 200 L162 224" fill="none" stroke="url(#ccGold)" stroke-width="9"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- right coder -->
+  <g>
+    <circle cx="490" cy="200" r="52" fill="#ffffff" opacity="0.11"/>
+    <circle cx="490" cy="200" r="52" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.3"/>
+    <path d="M478 176 L506 200 L478 224" fill="none" stroke="url(#ccGold)" stroke-width="9"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- what they ship together -->
+  <g>
+    <path d="M320 250 C 292 226, 268 210, 268 186 C 268 168, 282 156, 298 156
+             C 308 156, 316 162, 320 170 C 324 162, 332 156, 342 156
+             C 358 156, 372 168, 372 186 C 372 210, 348 226, 320 250 Z"
+          fill="url(#ccGold)" opacity="0.16"/>
+    <path d="M320 250 C 292 226, 268 210, 268 186 C 268 168, 282 156, 298 156
+             C 308 156, 316 162, 320 170 C 324 162, 332 156, 342 156
+             C 358 156, 372 168, 372 186 C 372 210, 348 226, 320 250 Z"
+          fill="none" stroke="url(#ccGold)" stroke-width="4.5" stroke-linejoin="round"/>
+    <path d="M306 194 L316 204 L336 182" fill="none" stroke="url(#ccGold)" stroke-width="5"
+          stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+  </g>
+
+  <!-- shuffle / pairing sparks -->
+  <circle cx="240" cy="300" r="4.5" fill="#ffffff" opacity="0.32"/>
+  <circle cx="320" cy="312" r="5.5" fill="url(#ccGold)" opacity="0.7"/>
+  <circle cx="400" cy="300" r="4.5" fill="#ffffff" opacity="0.32"/>
+</svg>

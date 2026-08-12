@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400">
+  <defs>
+    <linearGradient id="thBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#173a3a"/>
+      <stop offset="1" stop-color="#2f6e6a"/>
+    </linearGradient>
+    <linearGradient id="thGold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f2dda9"/>
+      <stop offset="1" stop-color="#d3a74d"/>
+    </linearGradient>
+    <radialGradient id="thGlow" cx="0.5" cy="0.42" r="0.62">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="thDots" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.3" fill="#ffffff" opacity="0.08"/>
+    </pattern>
+  </defs>
+
+  <rect width="640" height="400" fill="url(#thBg)"/>
+  <rect width="640" height="400" fill="url(#thDots)"/>
+  <rect width="640" height="400" fill="url(#thGlow)"/>
+
+  <!-- call tiles: 3 x 2 -->
+  <g>
+    <!-- row 1 -->
+    <g>
+      <rect x="71" y="88" width="150" height="100" rx="12" fill="#ffffff" opacity="0.09"/>
+      <rect x="71" y="88" width="150" height="100" rx="12" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.16"/>
+      <circle cx="146" cy="126" r="17" fill="#ffffff" opacity="0.34"/>
+      <path d="M120 178 a26 26 0 0 1 52 0 Z" fill="#ffffff" opacity="0.24"/>
+    </g>
+    <!-- active speaker -->
+    <g>
+      <rect x="245" y="88" width="150" height="100" rx="12" fill="#ffffff" opacity="0.13"/>
+      <rect x="245" y="88" width="150" height="100" rx="12" fill="none" stroke="url(#thGold)" stroke-width="3"/>
+      <circle cx="320" cy="126" r="17" fill="url(#thGold)"/>
+      <path d="M294 178 a26 26 0 0 1 52 0 Z" fill="url(#thGold)" opacity="0.8"/>
+    </g>
+    <g>
+      <rect x="419" y="88" width="150" height="100" rx="12" fill="#ffffff" opacity="0.09"/>
+      <rect x="419" y="88" width="150" height="100" rx="12" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.16"/>
+      <circle cx="494" cy="126" r="17" fill="#ffffff" opacity="0.34"/>
+      <path d="M468 178 a26 26 0 0 1 52 0 Z" fill="#ffffff" opacity="0.24"/>
+    </g>
+    <!-- row 2 -->
+    <g>
+      <rect x="71" y="212" width="150" height="100" rx="12" fill="#ffffff" opacity="0.09"/>
+      <rect x="71" y="212" width="150" height="100" rx="12" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.16"/>
+      <circle cx="146" cy="250" r="17" fill="#ffffff" opacity="0.34"/>
+      <path d="M120 302 a26 26 0 0 1 52 0 Z" fill="#ffffff" opacity="0.24"/>
+    </g>
+    <g>
+      <rect x="245" y="212" width="150" height="100" rx="12" fill="#ffffff" opacity="0.09"/>
+      <rect x="245" y="212" width="150" height="100" rx="12" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.16"/>
+      <circle cx="320" cy="250" r="17" fill="#ffffff" opacity="0.34"/>
+      <path d="M294 302 a26 26 0 0 1 52 0 Z" fill="#ffffff" opacity="0.24"/>
+    </g>
+    <g>
+      <rect x="419" y="212" width="150" height="100" rx="12" fill="#ffffff" opacity="0.09"/>
+      <rect x="419" y="212" width="150" height="100" rx="12" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.16"/>
+      <circle cx="494" cy="250" r="17" fill="#ffffff" opacity="0.34"/>
+      <path d="M468 302 a26 26 0 0 1 52 0 Z" fill="#ffffff" opacity="0.24"/>
+    </g>
+  </g>
+
+  <!-- speaking waves off the active tile -->
+  <g fill="none" stroke="url(#thGold)" stroke-linecap="round" opacity="0.75">
+    <path d="M410 122 a26 26 0 0 1 0 32" stroke-width="4"/>
+    <path d="M424 110 a44 44 0 0 1 0 56" stroke-width="4" opacity="0.55"/>
+    <path d="M230 122 a26 26 0 0 0 0 32" stroke-width="4"/>
+    <path d="M216 110 a44 44 0 0 0 0 56" stroke-width="4" opacity="0.55"/>
+  </g>
+</svg>
