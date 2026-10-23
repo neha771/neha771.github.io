@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import type { FolderKey } from '../data/folders';
 
-export type WindowKey = FolderKey | 'guestbook';
+export type WindowKey = FolderKey | 'game';
 
 export function useWindowManager() {
   const [openKey, setOpenKey] = useState<WindowKey | null>(null);
@@ -9,7 +9,7 @@ export function useWindowManager() {
 
   const openWin = useCallback((key: WindowKey, parent?: FolderKey) => {
     setOpenKey(key);
-    setParentKey(key === 'guestbook' ? null : parent ?? null);
+    setParentKey(key === 'game' ? null : parent ?? null);
   }, []);
 
   const closeWin = useCallback(() => {

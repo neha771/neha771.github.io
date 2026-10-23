@@ -1,4 +1,4 @@
-const STORAGE_KEY = 'nsm_desktop_positions';
+const STORAGE_KEY = 'nsm_desktop_positions_v3';
 
 export interface DeskPosition {
   left: number;

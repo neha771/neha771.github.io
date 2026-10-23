@@ -86,15 +86,8 @@ html,body{height:100%}
 :root[data-theme="light"] .file-sub{color:var(--gold)}
 :root[data-theme="light"] .file-desc{color:var(--ink-mid)}
 :root[data-theme="light"] .ftag{background:rgba(34,34,32,.05);border-color:rgba(34,34,32,.14);color:var(--ink-mid)}
-:root[data-theme="light"] .gb-form h4{color:var(--ink)}
-:root[data-theme="light"] .gb-form p{color:var(--ink-soft)}
-:root[data-theme="light"] .gb-form input,:root[data-theme="light"] .gb-form textarea{background:rgba(247,246,242,.85);border-color:rgba(34,34,32,.16);color:var(--ink)}
-:root[data-theme="light"] .gb-form input:focus,:root[data-theme="light"] .gb-form textarea:focus{border-color:var(--gold)}
-:root[data-theme="light"] .gb-form input::placeholder,:root[data-theme="light"] .gb-form textarea::placeholder{color:var(--ink-soft)}
-:root[data-theme="light"] .gb-btn{background:linear-gradient(135deg,#2f2f2c,#1c1c1a);color:#fff;box-shadow:0 6px 18px rgba(34,34,32,.22)}
-:root[data-theme="light"] .gbe{background:rgba(247,246,242,.85);border-color:rgba(34,34,32,.1)}
-:root[data-theme="light"] .gbe .gm{color:var(--ink)}
-:root[data-theme="light"] .gbe .gn{color:var(--gold)}
-:root[data-theme="light"] .gb-empty{color:var(--ink-soft)}
+:root[data-theme="light"] .game-overlay{background:rgba(252,251,248,.72)}
+:root[data-theme="light"] .hud-time{background:rgba(34,34,32,.06)}
+:root[data-theme="light"] .hole-back{background:radial-gradient(ellipse at 50% 40%,rgba(60,50,30,.45),rgba(60,50,30,.15) 70%)}
 :root[data-theme="light"] .hint{background:rgba(255,255,255,.9);border-color:rgba(34,34,32,.14);color:var(--ink-mid)}
 :root[data-theme="light"] .hint .k{color:var(--gold)}

@@ -46,8 +46,8 @@ interface DeskItemViewProps {
 function DeskItemView({ item, index, desktopRef, theme, nextZIndex, onOpenWin }: DeskItemViewProps) {
   const onTap = () => {
     if (item.type === 'folder') onOpenWin(item.key);
-    else if (item.type === 'journal') onOpenWin('guestbook');
     else if (item.type === 'resume') window.open(RESUME_LINK, '_blank');
+    else if (item.type === 'game') onOpenWin('game');
   };
 
   const { handleRef } = useDraggable<HTMLDivElement>({
@@ -85,12 +85,12 @@ function DeskItemView({ item, index, desktopRef, theme, nextZIndex, onOpenWin }:
     return () => window.removeEventListener('resize', position);
   }, [desktopRef, handleRef, item.x, item.y, index]);
 
-  const swayTypes = item.type === 'folder' || item.type === 'journal' || item.type === 'resume';
+  const swayTypes = item.type === 'folder' || item.type === 'resume' || item.type === 'game';
   const animDelay = `${(index * 0.34).toFixed(1)}s`;
   const animDuration = `${(5.8 + index * 0.4).toFixed(1)}s`;
 
   return (
-    <div className="desk-item" ref={handleRef}>
+    <div className="desk-item" ref={handleRef} style={{ '--enter-delay': `${index * 60}ms` } as React.CSSProperties}>
       <div
         className={`desk-inner${swayTypes ? ' sway' : ''}`}
         style={{ animationDelay: animDelay, animationDuration: animDuration }}
@@ -107,7 +107,14 @@ function renderItem(item: DeskItemData, theme: Theme) {
       return (
         <div className={`note ${item.variant}`} style={{ '--rot': `${item.rot}deg` } as React.CSSProperties}>
           <div className="eyebrow">{item.eyebrow}</div>
-          <h3>{item.title}</h3>
+          <h3>
+            {item.title}
+            {item.wave && (
+              <span className="wave" aria-hidden="true">
+                👋
+              </span>
+            )}
+          </h3>
           <p>{item.body}</p>
           {item.chip && (
             <div className="chip">
@@ -146,19 +153,17 @@ function renderItem(item: DeskItemData, theme: Theme) {
         </>
       );
     }
-    case 'journal':
+    case 'game':
       return (
         <>
-          <div className="journal">
-            <span className="jt">
-              GUEST
-              <br />
-              BOOK
+          <div className="folder arcade" style={{ '--f1': '#c2477a', '--f2': '#6a3fb5' } as React.CSSProperties}>
+            <span className="em">🎮</span>
+            <span className="ct face">
+              <img src={nehaPhoto} alt="" draggable={false} />
             </span>
-            <span className="jpen">✍️</span>
           </div>
-          <div className="desk-label">Guest Book</div>
-          <div className="desk-meta">leave a note</div>
+          <div className="desk-label">Catch Neha</div>
+          <div className="desk-meta">mini game</div>
         </>
       );
     case 'resume':

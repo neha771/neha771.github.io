@@ -19,6 +19,15 @@ import imgCoCoder from '../assets/images/co-coder.svg';
 import imgTinkerday from '../assets/images/tinkerday.webp';
 import imgDevfest from '../assets/images/devfest.webp';
 import imgMeetup from '../assets/images/meetup.webp';
+import imgIrctc from '../assets/images/irctc.webp';
+import imgCaseathon from '../assets/images/caseathon.webp';
+import imgQwipo from '../assets/images/qwipo.webp';
+import imgPolaroids from '../assets/images/polaroids.webp';
+import imgDirecture from '../assets/images/directure.webp';
+import imgKsum from '../assets/images/ksum.webp';
+import imgT4g from '../assets/images/t4g.webp';
+import imgTinkerhub from '../assets/images/tinkerhub.webp';
+import imgPublicis from '../assets/images/publicis.webp';
 
 export interface FolderFile {
   ico: string;
@@ -59,17 +68,19 @@ export const FOLDERS: Record<FolderKey, FolderDef> = {
     f1: '#3a2c4e', f2: '#5a3d82', tab: '#6b4a9a',
     files: [
       { ico: '🛒', title: 'Product Manager Intern', sub: 'Qwipo · May 2026 – Present',
-        desc: 'Leading 0→1 design of a vendor onboarding portal. Authored PRDs & user stories across seller store, retailer & logistics apps.', tags: ['0→1', 'PRDs', 'Market Research'] },
+        desc: 'Owning problems end-to-end on an ONDC-enabled B2B commerce platform. Shipped the serviceability beat feature (100+ distributors, Rs. 45K/month saved each), cut a 4–5 day vendor workflow to <2 hrs with Claude Skills automations, and launched a 0→1 vendor onboarding portal.', tags: ['0→1', 'AI Automation', 'PRDs', 'Field Research'], img: imgQwipo },
+      { ico: '📸', title: 'Co-Founder, Product & Growth', sub: 'Polaroids (iOS app) · Aug 2026 – Present',
+        desc: 'Acquired 150+ users in the first month of GTM via creator partnerships, brand collaborations & content. Selected for Velocity Cohort 1 by y0.', tags: ['Founder', 'GTM', 'Growth'], img: imgPolaroids },
       { ico: '🧭', title: 'Product Manager Intern', sub: 'Directure · Mar 2026 – May 2026',
-        desc: 'Owned product discovery — user interviews, PRDs, and a 0→1 dev workflow in Linear. Built investor pitch decks with founders.', tags: ['Discovery', 'Linear', 'Strategy'] },
+        desc: 'Partnered with founders on discovery — a competitive teardown & user interviews that reshaped positioning and tightened MVP scope. Built the 0→1 execution process in Linear.', tags: ['Discovery', 'Linear', 'Strategy'], img: imgDirecture },
       { ico: '💻', title: 'Associate Software Development Engineer', sub: 'Publicis Sapient · Feb 2024 – Aug 2025',
-        desc: 'Owned an internal stakeholder tool for Nissan end-to-end, cutting manual effort 50%+ and report time from ~2 days to <15 min.', tags: ['Automation', 'Agile', 'Nissan'] },
+        desc: 'Owned an internal stakeholder tool for Nissan end-to-end, cutting manual effort 50%+ and report time from ~2 days to <15 min. Shipped the mentor-matching service & UI/UX of a company-wide craft engagement platform.', tags: ['Automation', 'Agile', 'Nissan', 'CI/CD'], img: imgPublicis },
       { ico: '🚀', title: 'Technology Fellow — Women Entrepreneurship', sub: 'Kerala Startup Mission · Aug 2023 – Jan 2024',
-        desc: 'Designed & ran WE Start, a 0→1 pre-incubation program supporting 200+ women-led startups; +50% participant satisfaction.', tags: ['Program Mgmt', '0→1', 'Research'] },
+        desc: 'Designed & ran WE Start, a 0→1 pre-incubation program supporting 200+ women-led startups; +50% participant satisfaction and 1,000+ women founders reached via a digital resource library.', tags: ['Program Mgmt', '0→1', 'Research'], img: imgKsum },
       { ico: '🌱', title: 'Product Manager Intern', sub: 'T4G Impact Tech (Aikyam Fellows) · Feb – Apr 2023',
-        desc: 'Drove ideation & roadmap for a fellowship platform; ran user interviews with NGO partners to refine MVP scope.', tags: ['Roadmap', 'User Research', 'Impact'] },
+        desc: 'Drove ideation & roadmap for a fellowship platform; ran user interviews with NGO partners to refine MVP scope.', tags: ['Roadmap', 'User Research', 'Impact'], img: imgT4g },
       { ico: '👥', title: 'Community Manager', sub: 'TinkerHub Foundation · Jun 2021 – Apr 2023',
-        desc: 'Scaled a 15,000+ member tech community. Ran 40+ events and lifted active participation ~85%.', tags: ['Community', 'Events', 'Growth'] },
+        desc: 'Scaled a 15,000+ member tech community. Ran 40+ events and lifted active participation ~85%.', tags: ['Community', 'Events', 'Growth'], img: imgTinkerhub },
     ],
   },
   projects: {
@@ -82,9 +93,10 @@ export const FOLDERS: Record<FolderKey, FolderDef> = {
     f1: '#2a3c63', f2: '#3f5e96', tab: '#4d6fa8',
     desc: 'Case studies, research projects & 0→1 builds',
     files: [
+      { ico: '🚆', title: 'Connecting Train Journeys (IRCTC)', desc: 'Sized an underserved traveller problem with a 94-response survey & live KPI dashboard (19.1% had missed a connection, 63.2% would pay). Validated demand with a fake-door test: 159 sessions, 22 of 23 price picks chose a paid tier.', tags: ['Market Research', 'Fake-Door Test', 'Validation'], link: 'https://mrv-tau.vercel.app/', img: imgIrctc },
       { ico: '🛣️', title: 'Designing for Indian Roads', desc: 'HCI study on usability challenges of Indian road conditions → interaction principles & interface recommendations.', tags: ['HCI', 'Research', 'Interaction'], link: 'https://drive.google.com/file/d/13301HTq8iZ64Zr3dPrxyB67qYBWju-Eg/view', img: imgHci },
-      { ico: '🤖', title: 'Emotional Sharing with AI Tools', desc: 'Mixed-methods study on how adults 18–40 emotionally engage with AI conversational tools.', tags: ['User Research', 'Card Sorting'], link: 'https://drive.google.com/file/d/19n12xb1Io1uN-WviCQYlIfzH3ArvzFib/view', img: imgUrm },
-      { ico: '👗', title: 'OOTD', desc: 'Private iOS outfit-diary app — polaroid-style daily photo logging with occasion & location tags, no social feed, built around user privacy.', tags: ['0→1', 'iOS', 'Product Thinking'], link: 'https://ootd-app-topaz.vercel.app/', img: imgOotd },
+      { ico: '🤖', title: 'Emotional Sharing with AI Tools', desc: 'Mixed-methods study on how adults 18–40 emotionally engage with AI conversational tools, turned into design recommendations.', tags: ['User Research', 'Card Sorting'], link: 'https://drive.google.com/file/d/19n12xb1Io1uN-WviCQYlIfzH3ArvzFib/view', img: imgUrm },
+      { ico: '👗', title: 'OOTD', desc: 'Private iOS outfit-diary app, live on the App Store — polaroid-style daily photo logging with occasion & location tags and no social feed. Grew to 50+ users through word of mouth.', tags: ['0→1', 'iOS', 'App Store'], link: 'https://ootd-app-topaz.vercel.app/', img: imgOotd },
       { ico: '🔄', title: 'SkillSwap', desc: 'Peer-to-peer skill exchange platform — product discovery, Figma wireframing & full-stack MERN build.', tags: ['0→1', 'Full Stack', 'Wireframing'], link: 'https://drive.google.com/file/d/1dPdX8xhUIIbWTVMqVriklOKalOiFoW-j/view', img: imgSkillswap },
       { ico: '🎨', title: 'Design Thinking Project', desc: 'A collaborative maker-experience platform built through the design thinking process.', tags: ['Design Thinking', 'IIIT-H'], link: 'https://drive.google.com/file/d/1Wb3ZXYt-Vw4KUOSokVyeIzdDtD68FGi9/view', img: imgDesignThinking },
       { ico: '💬', title: 'Vidya Vichar', desc: 'Interactive classroom Q&A system for real-time student engagement.', tags: ['Full Stack', 'Product'], link: 'https://github.com/Ishaan-Giri/VidyaVichar.git', img: imgVidyavichar },
@@ -98,6 +110,8 @@ export const FOLDERS: Record<FolderKey, FolderDef> = {
     f1: '#4e2c3a', f2: '#823d54', tab: '#9a4866',
     desc: 'Hackathon-winning prototypes & finalist projects',
     files: [
+      { ico: '📋', title: 'CaseAthon — Top 5', sub: 'PM Club · Infinium Fest, IIIT Hyderabad',
+        desc: 'Team finalist in a national-level case competition organized by the PM Club at IIIT Hyderabad as part of Infinium Fest.', tags: ['Case Competition', 'Finalist', 'Product Strategy'], link: 'http://drive.google.com/file/d/1Dl3Ih6v_9gi9CtJ1RCFJ57twB7NdNLTb/view?usp=drive_link', img: imgCaseathon },
       { ico: '♿', title: 'Indah', desc: 'Accessibility platform for differently-abled users — led scoping, personas & rapid prototyping. Hackathon winner.', tags: ['Accessibility', 'Winner'], link: 'https://devpost.com/software/indah', img: imgIndah },
       { ico: '🌍', title: 'Ecotopia', desc: 'Climate-impact solution that reached the national finals — IBM Call for Code 2021 National Finalist.', tags: ['Sustainability', 'IBM Finalist'], link: 'https://devpost.com/software/ecotopia-acus9o', img: imgEcotopia },
       { ico: '🌸', title: 'Viva La Vulva', desc: 'Menstrual health & awareness platform.', tags: ['HealthTech', 'Product'], link: 'https://devpost.com/software/viva-la-vulva', img: imgVivaLaVulva },
@@ -141,7 +155,7 @@ export const FOLDERS: Record<FolderKey, FolderDef> = {
     name: 'Education', em: '🎓',
     f1: '#1d4a3e', f2: '#2f6e58', tab: '#3a8068',
     files: [
-      { ico: '🎓', title: 'M.Tech, Product Design & Management', sub: 'IIIT Hyderabad', desc: '2025 – Present · CGPA 8.61', tags: ['Product', 'Design'] },
+      { ico: '🎓', title: 'M.Tech, Product Design & Management', sub: 'IIIT Hyderabad', desc: '2025 – 2027 · CGPA 8.61 · Dean\'s List Award', tags: ['Product', 'Design', "Dean's List"] },
       { ico: '💻', title: 'B.Tech, Computer Science & Engineering', sub: 'Govt Engineering College, Thrissur', desc: '2019 – 2023 · CGPA 8.81', tags: ['CSE'] },
       { ico: '📚', title: 'AISSCE (PCMC) & AISSE', sub: 'Good Shepherd Public School, Thengana', desc: 'AISSCE 2019 · 96.2%   |   AISSE 2017 · CGPA 10', tags: ['School'] },
     ],
@@ -150,6 +164,8 @@ export const FOLDERS: Record<FolderKey, FolderDef> = {
     name: 'Achievements', em: '⭐',
     f1: '#3a2c4e', f2: '#5a3d82', tab: '#6b4a9a',
     files: [
+      { ico: '🎖️', title: "Dean's List Award", desc: 'IIIT Hyderabad — selected for top academic performance', tags: ['Academic', 'IIIT-H'] },
+      { ico: '🚀', title: 'Velocity Cohort 1 by y0', desc: 'Polaroids selected — 13 companies, Fall 2026', tags: ['Startup', 'Founder'] },
       { ico: '☁️', title: 'AWS Certified Cloud Practitioner', desc: 'CLF-C02 Certification', tags: ['Cloud'] },
       { ico: '🥇', title: 'IBM Call for Code 2021', desc: 'National Finalist', tags: ['Hackathon'] },
       { ico: '🎓', title: 'Carolyn Leighton Scholar', desc: 'Recognized for academic excellence', tags: ['Scholarship'] },
@@ -158,16 +174,18 @@ export const FOLDERS: Record<FolderKey, FolderDef> = {
       { ico: '🥈', title: 'Make-a-thon National', desc: '2nd Prize', tags: ['Hackathon'] },
       { ico: '🌿', title: 'Envirothon International', desc: '2nd Place', tags: ['Sustainability'] },
       { ico: '⛰️', title: 'Hack the Mountains National', desc: 'Top 55', tags: ['Hackathon'] },
+      { ico: '📋', title: 'CaseAthon National Case Competition', desc: 'Finalist (Top 5) — IIIT Hyderabad', tags: ['Case Study'] },
     ],
   },
   skills: {
     name: 'Skills', em: '🧩',
     f1: '#1d4444', f2: '#2f6e6a', tab: '#3a807c',
     files: [
-      { ico: '🧩', title: 'Product Management', tags: ['Product Strategy', 'Roadmapping', 'PRD & User Stories', 'Feature Prioritization', 'OKRs & Metrics', 'GTM'] },
-      { ico: '🔍', title: 'Research & Design', tags: ['User Research', 'Design Thinking', 'Wireframing', 'Usability Testing', 'Journey Design', 'Competitive Analysis'] },
+      { ico: '🧩', title: 'Product Management', tags: ['Product Strategy', 'Roadmapping', 'PRD & User Stories', 'Acceptance Criteria', 'Feature Prioritization', 'MVP Definition', 'KPIs & Metrics', 'Release Mgmt', 'GTM'] },
+      { ico: '📐', title: 'Technical Product', tags: ['REST API Design', 'System Design', 'Technical Specs', 'Data Modelling', 'SDLC', 'QA & UAT', 'Edge Case Analysis'] },
+      { ico: '🔍', title: 'Research & Data', tags: ['Field Research', 'User Interviews', 'Survey Design', 'Fake-Door Testing', 'A/B Testing', 'Funnel Analysis', 'Dashboards', 'Competitive Analysis', 'Design Thinking', 'Wireframing'] },
       { ico: '⚡', title: 'Execution & Delivery', tags: ['Agile & Scrum', 'Sprint Planning', 'Stakeholder Comms', 'Cross-functional', 'Program Mgmt'] },
-      { ico: '🛠️', title: 'Tools', tags: ['Figma', 'Jira', 'Linear', 'Notion', 'Confluence', 'Postman', 'Git', 'SQL', 'Claude'] },
+      { ico: '🛠️', title: 'Tools', tags: ['Figma', 'Jira', 'Linear', 'Notion', 'Confluence', 'Postman', 'Git', 'SQL', 'Excel', 'Claude Code', 'Claude Skills'] },
       { ico: '💻', title: 'Technical', tags: ['Java', 'Spring Boot', 'MERN', 'REST APIs', 'HTML', 'CSS', 'JS'] },
       { ico: '☁️', title: 'Infrastructure & Data', tags: ['AWS', 'Docker', 'Jenkins', 'PostgreSQL', 'MongoDB'] },
     ],

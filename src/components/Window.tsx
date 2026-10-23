@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type CSSProperties } from 'react';
 import { FOLDERS, type FolderDef, type FolderFile, type FolderKey } from '../data/folders';
 import { useDraggable } from '../hooks/useDraggable';
+import { CatchGame } from './CatchGame';
 import type { WindowKey } from '../hooks/useWindowManager';
-import { GuestBook } from './GuestBook';
 
 interface WindowProps {
   openKey: WindowKey | null;
@@ -31,7 +31,7 @@ export function Window({ openKey, parentKey, onClose, onOpenWin }: WindowProps) 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [openKey]);
 
-  // Recenter (desktop only) every time a new folder/subfolder/guestbook opens.
+  // Recenter (desktop only) every time a new folder/subfolder/game opens.
   // `mounted` must be a dependency: the first run after openKey changes fires
   // before the window's DOM node exists (mounted is still false that render).
   useEffect(() => {
@@ -49,12 +49,12 @@ export function Window({ openKey, parentKey, onClose, onOpenWin }: WindowProps) 
 
   if (!mounted || !openKey) return null;
 
-  const isGuestBook = openKey === 'guestbook';
-  const f: FolderDef = isGuestBook ? { name: 'Guest Book', em: '📖', f1: '', f2: '', tab: '' } : FOLDERS[openKey];
-  const isGroup = !isGuestBook && !!f.subfolders;
-  const count = isGuestBook ? 0 : isGroup ? f.subfolders!.length : f.files?.length ?? 0;
-  const countLabel = isGuestBook ? 'leave a note' : isGroup ? `${count} folders` : `${count} items`;
-  const parent = !isGuestBook && parentKey ? FOLDERS[parentKey] : null;
+  const isGame = openKey === 'game';
+  const f: FolderDef = isGame ? { name: 'Catch Neha', em: '🎮', f1: '', f2: '', tab: '' } : FOLDERS[openKey];
+  const isGroup = !!f.subfolders;
+  const count = isGroup ? f.subfolders!.length : f.files?.length ?? 0;
+  const countLabel = isGame ? 'mini game' : isGroup ? `${count} folders` : `${count} items`;
+  const parent = parentKey ? FOLDERS[parentKey] : null;
 
   return (
     <div className={`window${show ? ' show' : ''}`} ref={winRef} style={{ display: 'flex' }}>
@@ -74,11 +74,7 @@ export function Window({ openKey, parentKey, onClose, onOpenWin }: WindowProps) 
         </div>
         <div className="win-tools">⌕ ⚙</div>
       </div>
-      {isGuestBook ? (
-        <GuestBook />
-      ) : (
-        <FolderBody folderKey={openKey as FolderKey} onOpenWin={onOpenWin} />
-      )}
+      {isGame ? <CatchGame /> : <FolderBody folderKey={openKey} onOpenWin={onOpenWin} />}
     </div>
   );
 }
@@ -93,15 +89,15 @@ function FolderBody({
   const f = FOLDERS[folderKey];
   if (f.subfolders) {
     return (
-      <div className="win-body">
-        {f.subfolders.map((key) => (
-          <SubfolderCard key={key} folderKey={key} parentKey={folderKey} onOpenWin={onOpenWin} />
+      <div className="win-body" key={folderKey}>
+        {f.subfolders.map((key, i) => (
+          <SubfolderCard key={key} folderKey={key} parentKey={folderKey} index={i} onOpenWin={onOpenWin} />
         ))}
       </div>
     );
   }
   return (
-    <div className="win-body">
+    <div className="win-body" key={folderKey}>
       {(f.files ?? []).map((file, i) => (
         <FileCard key={i} file={file} index={i} />
       ))}
@@ -110,6 +106,9 @@ function FolderBody({
 }
 
 const GRADIENT_CLASSES = ['g1', 'g2', 'g3', 'g4', 'g5', 'g6'];
+
+// Feeds the card cascade-in stagger (see .win-body > .file in animations.css).
+const cascade = (i: number) => ({ '--i': i }) as CSSProperties;
 
 function FileCard({ file, index }: { file: FolderFile; index: number }) {
   const g = GRADIENT_CLASSES[index % GRADIENT_CLASSES.length];
@@ -150,27 +149,33 @@ function FileCard({ file, index }: { file: FolderFile; index: number }) {
   if (file.link) {
     const link = file.link;
     return (
-      <div className="file link" onClick={() => window.open(link, '_blank')}>
+      <div className="file link" style={cascade(index)} onClick={() => window.open(link, '_blank')}>
         {inner}
       </div>
     );
   }
-  return <div className="file">{inner}</div>;
+  return (
+    <div className="file" style={cascade(index)}>
+      {inner}
+    </div>
+  );
 }
 
 function SubfolderCard({
   folderKey,
   parentKey,
+  index,
   onOpenWin,
 }: {
   folderKey: FolderKey;
   parentKey: FolderKey;
+  index: number;
   onOpenWin: (key: WindowKey, parent?: FolderKey) => void;
 }) {
   const f = FOLDERS[folderKey];
   const ct = f.files ? f.files.length : 0;
   return (
-    <div className="file link sub" onClick={() => onOpenWin(folderKey, parentKey)}>
+    <div className="file link sub" style={cascade(index)} onClick={() => onOpenWin(folderKey, parentKey)}>
       <div className="thumb" style={{ background: `linear-gradient(140deg,${f.f1},${f.f2})` }}>
         <span className="te">{f.em}</span>
         <span className="arr">→</span>

@@ -1,4 +1,5 @@
 import { DecorativeLayers } from './components/DecorativeLayers';
+import { ColorTrail } from './components/ColorTrail';
 import { Topbar } from './components/Topbar';
 import { Desktop } from './components/Desktop';
 import { Backdrop } from './components/Backdrop';
@@ -14,6 +15,7 @@ export default function App() {
   return (
     <>
       <DecorativeLayers />
+      <ColorTrail />
       <Topbar theme={theme} onToggleTheme={toggleTheme} />
       <Desktop theme={theme} onOpenWin={openWin} />
       <Backdrop show={isOpen} onClick={closeWin} />
