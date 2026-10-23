@@ -1,4 +1,4 @@
-import { useEffect, type CSSProperties, type ReactNode } from 'react';
+import { useEffect, useId, useState, type CSSProperties, type ReactNode } from 'react';
 import { FOLDERS } from '../data/folders';
 import type { FolderFile } from '../data/folders';
 import { LINKS } from '../data/sections';
@@ -51,23 +51,69 @@ interface BlockProps {
   children: ReactNode;
   className?: string;
   onOpen?: () => void;
+  /** Collapsed by default; the heading becomes a toggle that opens it in place. */
+  collapsible?: boolean;
+  /** Shown beside a collapsed heading, e.g. "15 projects". */
+  summary?: string;
 }
 
-function Block({ title, i, children, className = '', onOpen }: BlockProps) {
+function Block({ title, i, children, className = '', onOpen, collapsible = false, summary }: BlockProps) {
+  const [expanded, setExpanded] = useState(!collapsible);
+  const bodyId = useId();
+
   return (
-    <section className={`g-block ${className}`} style={{ '--i': i } as CSSProperties}>
+    <section
+      className={`g-block ${className}${collapsible ? ' collapsible' : ''}${expanded ? ' open' : ''}`}
+      style={{ '--i': i } as CSSProperties}
+    >
       <div className="g-head-row">
         <h2 className="g-head">
-          <span className="g-tri" aria-hidden="true" />
-          {title}
+          {collapsible ? (
+            <button
+              type="button"
+              className="g-toggle"
+              aria-expanded={expanded}
+              aria-controls={bodyId}
+              onClick={() => setExpanded((v) => !v)}
+            >
+              <span className="g-tri" aria-hidden="true" />
+              {title}
+              {summary && <span className="g-summary">{summary}</span>}
+            </button>
+          ) : (
+            <>
+              <span className="g-tri" aria-hidden="true" />
+              {title}
+            </>
+          )}
         </h2>
-        {onOpen && (
-          <button type="button" className="g-more" onClick={onOpen}>
-            See cards →
-          </button>
-        )}
+        <div className="g-head-actions">
+          {collapsible && (
+            <button
+              type="button"
+              className="g-more g-show"
+              aria-expanded={expanded}
+              aria-controls={bodyId}
+              onClick={() => setExpanded((v) => !v)}
+            >
+              {expanded ? 'Hide' : 'Show'}
+            </button>
+          )}
+          {onOpen && (
+            <button type="button" className="g-more" onClick={onOpen}>
+              See cards →
+            </button>
+          )}
+        </div>
       </div>
-      {children}
+      {collapsible ? (
+        // grid-rows 0fr → 1fr animates to the content's natural height
+        <div className="g-collapse" id={bodyId} inert={!expanded}>
+          <div className="g-collapse-inner">{children}</div>
+        </div>
+      ) : (
+        children
+      )}
     </section>
   );
 }
@@ -198,12 +244,26 @@ export function Glance({ onJump }: GlanceProps) {
           </div>
         </div>
 
-        <Block title="Projects" i={3} className="g-wide" onOpen={() => onJump('projects', 0)}>
+        <Block
+          title="Projects"
+          i={3}
+          className="g-wide"
+          collapsible
+          summary={`${projects.length + hackathons.length} projects`}
+          onOpen={() => onJump('projects', 0)}
+        >
           <ProjectGroup label="Product & research" items={projects} onPick={(i) => onJump('projects', i)} />
           <ProjectGroup label="Hackathon builds" items={hackathons} onPick={(i) => onJump('hackathons', i)} />
         </Block>
 
-        <Block title="Skills" i={4} className="g-wide" onOpen={() => onJump('skills', 0)}>
+        <Block
+          title="Skills"
+          i={4}
+          className="g-wide"
+          collapsible
+          summary={`${skills.length} areas`}
+          onOpen={() => onJump('skills', 0)}
+        >
           <div className="g-skills">
             {skills.map((s, i) => (
               <button type="button" className="g-skill g-link" key={s.title} onClick={() => onJump('skills', i)}>
@@ -214,7 +274,14 @@ export function Glance({ onJump }: GlanceProps) {
           </div>
         </Block>
 
-        <Block title="Achievements" i={5} className="g-wide" onOpen={() => onJump('achievements', 0)}>
+        <Block
+          title="Achievements"
+          i={5}
+          className="g-wide"
+          collapsible
+          summary={`${achievements.length} wins`}
+          onOpen={() => onJump('achievements', 0)}
+        >
           <ul className="g-ach">
             {achievements.map((a, i) => (
               <li key={a.title}>

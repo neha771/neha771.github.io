@@ -281,6 +281,24 @@ a{color:inherit}
 .g-head{display:flex;align-items:center;gap:16px;font-family:var(--f-disp);font-weight:800;font-size:clamp(20px,1.85vw,28px);
   text-transform:uppercase;letter-spacing:.01em;color:var(--magenta-hi);white-space:nowrap}
 .g-tri{width:11px;height:14px;background:var(--ink);clip-path:polygon(0 0,100% 50%,0 100%);flex-shrink:0}
+/* collapsible sections: the heading's triangle is a real disclosure toggle */
+.g-head-actions{display:flex;gap:8px;flex-shrink:0}
+.g-toggle{display:inline-flex;align-items:center;gap:16px;border:0;background:none;padding:0;cursor:pointer;
+  font:inherit;color:inherit;text-transform:inherit;letter-spacing:inherit;text-align:left}
+.g-toggle .g-tri{transition:transform var(--dur-3) var(--ease-in-out-cubic)}
+.g-block.open .g-toggle .g-tri{transform:rotate(90deg)}
+.g-toggle:hover .g-tri{background:var(--magenta-hi)}
+.g-summary{font-family:var(--f-ui);font-size:.72rem;font-weight:700;letter-spacing:.08em;color:var(--ink-soft);
+  padding:4px 10px;border-radius:99px;border:1px solid var(--line);align-self:center}
+.g-show{min-width:64px}
+.g-block.open .g-show{color:#fff;border-color:var(--magenta-hi);background:rgba(211,35,156,.14)}
+.g-collapse{display:grid;grid-template-rows:0fr;transition:grid-template-rows 320ms var(--ease-in-out-cubic)}
+.g-block.open .g-collapse{grid-template-rows:1fr}
+.g-collapse-inner{min-height:0;overflow:hidden;opacity:0;transition:opacity 220ms ease}
+.g-block.open .g-collapse-inner{opacity:1;transition-delay:80ms}
+.g-block.collapsible .g-head-row{margin-bottom:0;transition:margin-bottom 320ms var(--ease-in-out-cubic)}
+.g-block.collapsible.open .g-head-row{margin-bottom:22px}
+.g-wide.collapsible{padding-top:3.2vh;padding-bottom:3.2vh}
 .g-more{flex-shrink:0;border:1px solid var(--line);background:none;cursor:pointer;font-size:.7rem;font-weight:800;letter-spacing:.06em;
   text-transform:uppercase;padding:8px 13px;border-radius:99px;color:var(--ink-mid);transition:color var(--dur-2) ease,border-color var(--dur-2) ease}
 .g-more:hover{color:#fff;border-color:var(--magenta-hi)}
@@ -365,6 +383,10 @@ a{color:inherit}
   .g-photo{width:84px;height:84px}
   .g-col{padding:4vh 7vw;gap:5vh}
   .g-tri{margin-left:0}
+  .g-summary{display:none}
+  .g-projects{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 12px}
+  .g-proj-title{font-size:.84rem}
+  .g-proj-desc{font-size:.74rem}
   .g-role.g-link{grid-template-columns:1fr 16px;gap:2px 10px}
   .g-role .g-title{grid-column:1}
   .g-role .g-go{grid-row:1 / span 2;grid-column:2;opacity:1}
