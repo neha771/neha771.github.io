@@ -2,27 +2,57 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Hero } from './components/Hero';
 import { CardWheel, type WheelHandle } from './components/CardWheel';
 import { Deck } from './components/Deck';
+import { Glance } from './components/Glance';
+import { TopBar, type View } from './components/TopBar';
 import { LINKS, SECTIONS } from './data/sections';
+
+// The view lives in the URL hash so "At a glance" can be shared and the back button works.
+const viewFromUrl = (): View => (window.location.hash === '#glance' ? 'glance' : 'cards');
 
 export default function App() {
   const stageRef = useRef<HTMLElement>(null);
   const wheelRef = useRef<WheelHandle>(null);
   const [open, setOpen] = useState<number | null>(null);
+  const [view, setViewState] = useState<View>(viewFromUrl);
   const close = useCallback(() => setOpen(null), []);
+
+  const setView = (v: View) => {
+    if (v === view) return;
+    window.history.pushState(null, '', v === 'glance' ? '#glance' : window.location.pathname);
+    setViewState(v);
+    setOpen(null);
+    window.scrollTo({ top: 0 });
+  };
+
+  useEffect(() => {
+    const onPop = () => setViewState(viewFromUrl());
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  }, []);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (open !== null) return;
+      if (open !== null || view !== 'cards') return;
       if (e.key === 'ArrowRight') wheelRef.current?.go(1);
       else if (e.key === 'ArrowLeft') wheelRef.current?.go(-1);
       else if (e.key === 'Enter' && document.activeElement === document.body) setOpen(wheelRef.current?.active() ?? 0);
     };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
-  }, [open]);
+  }, [open, view]);
+
+  if (view === 'glance') {
+    return (
+      <>
+        <TopBar view={view} onView={setView} />
+        <Glance />
+      </>
+    );
+  }
 
   return (
     <>
+      <TopBar view={view} onView={setView} />
       {/* Tall section: scrolling through it turns the card wheel while the stage stays pinned. */}
       <section
         className="stage"

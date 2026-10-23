@@ -1,6 +1,6 @@
 import { FOLDERS, type FolderFile } from './folders';
 import photo from '../assets/neha-bougainvillea.webp';
-import imgQwipo from '../assets/images/qwipo.webp';
+import imgTinkerhub from '../assets/images/tinkerhub.webp';
 import imgIrctc from '../assets/images/irctc.webp';
 import imgCaseathon from '../assets/images/caseathon.webp';
 import imgKsum from '../assets/images/ksum.webp';
@@ -16,7 +16,7 @@ export const LINKS = {
 };
 
 export const INTRO =
-  "I'm Neha, a product manager who builds. M.Tech in Product Design & Management at IIIT Hyderabad, PM intern at Qwipo and co-founder of Polaroids. I turn messy problems into products people love.";
+  "I'm Neha, a product manager who doesn't stop at the idea. I talk to the people living the problem, then build it into something real. PM intern at Qwipo, co-founder of Polaroids and M.Tech student at IIIT Hyderabad.";
 
 /** How a card on the wheel is dressed. */
 export type CardTone = 'photo' | 'image' | 'magenta' | 'navy' | 'paper';
@@ -30,6 +30,8 @@ export interface Section {
   cover?: string;
   /** Big typographic figure for cards without a cover image. */
   stat?: string;
+  /** When set, the top card opens this link instead of dealing out a deck. */
+  href?: string;
   files: FolderFile[];
 }
 
@@ -75,7 +77,7 @@ export const SECTIONS: Section[] = [
     title: 'Experience',
     blurb: 'Product roles, engineering roots and community building.',
     tone: 'image',
-    cover: imgQwipo,
+    cover: imgTinkerhub,
     files: FOLDERS.experience.files ?? [],
   },
   {
@@ -133,5 +135,14 @@ export const SECTIONS: Section[] = [
     tone: 'magenta',
     stat: String(FOLDERS.skills.files?.length ?? 0).padStart(2, '0'),
     files: FOLDERS.skills.files ?? [],
+  },
+  {
+    id: 'resume',
+    title: 'Resume',
+    blurb: 'Everything here on one page.',
+    tone: 'paper',
+    stat: 'CV',
+    href: LINKS.resume,
+    files: [],
   },
 ];

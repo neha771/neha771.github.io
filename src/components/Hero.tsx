@@ -1,4 +1,3 @@
-import { Logo } from './Logo';
 import { INTRO } from '../data/sections';
 
 const WORD = 'PORTFOLIO';
@@ -23,9 +22,10 @@ export function Hero({ onPrev, onNext }: HeroProps) {
           <br />
           to my
         </p>
-        <a className="hero-logo" href="#top" aria-label="Neha Susan Manoj, home">
-          <Logo />
-        </a>
+        <span className="status-chip">
+          <span className="dot" aria-hidden="true" />
+          Open to product roles
+        </span>
       </div>
 
       <div className="title-wrap">

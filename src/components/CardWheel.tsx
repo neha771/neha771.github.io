@@ -149,7 +149,11 @@ export const CardWheel = forwardRef<WheelHandle, CardWheelProps>(function CardWh
           total={n}
           active={i === active}
           refCb={(el) => (cardRefs.current[i] = el)}
-          onClick={() => (i === active ? onOpen(i) : goTo(i))}
+          onClick={() => {
+            if (i !== active) goTo(i);
+            else if (s.href) window.open(s.href, '_blank', 'noopener');
+            else onOpen(i);
+          }}
         />
       ))}
 
@@ -235,12 +239,12 @@ function WheelCard({ section: s, index, active, refCb, onClick }: WheelCardProps
               </span>
               <div className="wcard-caption plain">
                 <span className="wcard-title">{s.title}</span>
-                <span className="wcard-count">{count} cards</span>
+                <span className="wcard-count">{s.href ? 'One page' : `${count} cards`}</span>
               </div>
             </>
           )}
           <span className="glare" />
-          {active && <span className="wcard-open">Open ↗</span>}
+          {active && <span className="wcard-open">{s.href ? 'Download ↓' : 'Open ↗'}</span>}
         </div>
       </div>
     </button>
