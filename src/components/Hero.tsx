@@ -7,7 +7,7 @@ interface HeroProps {
   onNext: () => void;
 }
 
-/** The welcome block: title, colour bar, name, role and a short intro. */
+/** The welcome block: title, colour bar, status and a short intro. */
 export function Hero({ onPrev, onNext }: HeroProps) {
   return (
     <header className="hero">
@@ -24,7 +24,7 @@ export function Hero({ onPrev, onNext }: HeroProps) {
         </p>
         <span className="status-chip">
           <span className="dot" aria-hidden="true" />
-          Open to product roles
+          Open to Product Management roles
         </span>
       </div>
 
@@ -43,14 +43,12 @@ export function Hero({ onPrev, onNext }: HeroProps) {
       </div>
 
       <div className="hero-bottom">
-        <span className="meta">Neha Susan Manoj</span>
         <div className="intro-col">
           <p className="intro">{INTRO}</p>
           <span className="scroll-cue" aria-hidden="true">
             Scroll to turn the cards · Click the top one to open
           </span>
         </div>
-        <span className="meta right">Product Manager</span>
       </div>
     </header>
   );

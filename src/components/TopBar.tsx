@@ -1,15 +1,13 @@
 import { Logo } from './Logo';
 import { LINKS } from '../data/sections';
 
-export type View = 'cards' | 'glance';
-
 interface TopBarProps {
-  view: View;
-  onView: (v: View) => void;
+  glance: boolean;
+  onToggleGlance: () => void;
 }
 
-/** Always-visible contacts, resume download and the Cards / At a glance switch. */
-export function TopBar({ view, onView }: TopBarProps) {
+/** Always-visible contacts, resume download and the "At a glance" switch. */
+export function TopBar({ glance, onToggleGlance }: TopBarProps) {
   return (
     <nav className="topbar" aria-label="Contact and view">
       <a
@@ -25,15 +23,12 @@ export function TopBar({ view, onView }: TopBarProps) {
         <span className="tb-name">Neha Susan Manoj</span>
       </a>
 
-      <div className="view-toggle" role="tablist" aria-label="Choose a view">
-        <span className={`vt-thumb${view === 'glance' ? ' right' : ''}`} aria-hidden="true" />
-        <button type="button" role="tab" aria-selected={view === 'cards'} onClick={() => onView('cards')}>
-          Cards
-        </button>
-        <button type="button" role="tab" aria-selected={view === 'glance'} onClick={() => onView('glance')}>
-          At a glance
-        </button>
-      </div>
+      <button type="button" role="switch" aria-checked={glance} className="glance-switch" onClick={onToggleGlance}>
+        <span className="gs-label">At a glance</span>
+        <span className="gs-track" aria-hidden="true">
+          <span className="gs-knob" />
+        </span>
+      </button>
 
       <div className="tb-links">
         <a className="tb-icon" href={LINKS.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">

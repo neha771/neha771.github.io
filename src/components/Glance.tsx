@@ -38,122 +38,162 @@ const EDUCATION = [
   { school: 'GEC Thrissur', what: 'B.Tech, Computer Science · 2019 – 2023 · CGPA 8.81' },
 ];
 
-function Block({ title, children, i }: { title: string; children: ReactNode; i: number }) {
+const EXPERIENCE = FOLDERS.experience.files ?? [];
+const EDU_FILES = FOLDERS.education.files ?? [];
+const roleIndex = (company: string) => EXPERIENCE.findIndex((f) => f.sub?.startsWith(company));
+const eduIndex = (school: string) => EDU_FILES.findIndex((f) => f.sub?.includes(school.split(' ')[0]));
+
+interface BlockProps {
+  title: string;
+  i: number;
+  children: ReactNode;
+  className?: string;
+  onOpen?: () => void;
+}
+
+function Block({ title, i, children, className = '', onOpen }: BlockProps) {
   return (
-    <section className="g-block" style={{ '--i': i } as CSSProperties}>
-      <h2 className="g-head">
-        <span className="g-tri" aria-hidden="true" />
-        {title}
-      </h2>
+    <section className={`g-block ${className}`} style={{ '--i': i } as CSSProperties}>
+      <div className="g-head-row">
+        <h2 className="g-head">
+          <span className="g-tri" aria-hidden="true" />
+          {title}
+        </h2>
+        {onOpen && (
+          <button type="button" className="g-more" onClick={onOpen}>
+            See cards →
+          </button>
+        )}
+      </div>
       {children}
     </section>
   );
 }
 
-/** The one-screen summary: about, experience, skills, achievements, contact. */
-export function Glance() {
+interface GlanceProps {
+  /** Open a section's deck with one card flipped to its details. */
+  onJump: (sectionId: string, focus: number) => void;
+}
+
+/**
+ * The one-screen summary, as a sheet over the card wheel. Reads top to bottom:
+ * who → what I've done → what I can do → recognition. Every item links into its card.
+ */
+export function Glance({ onJump }: GlanceProps) {
   useEffect(() => {
-    window.scrollTo({ top: 0 });
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prev;
+    };
   }, []);
   const skills = FOLDERS.skills.files ?? [];
   const achievements = FOLDERS.achievements.files ?? [];
 
   return (
-    <main className="glance" id="top">
-      <header className="g-intro">
-        <img className="g-photo" src={PHOTO} alt="Neha Susan Manoj among bougainvillea" />
-        <div>
-          <span className="status-chip">
-            <span className="dot" aria-hidden="true" /> Open to product roles
-          </span>
-          <h1 className="g-name">Neha Susan Manoj</h1>
-          <p className="g-tag">Product manager who builds. Hyderabad, India.</p>
-        </div>
-      </header>
-
-      <div className="g-grid">
-        <div className="g-col">
-          <Block title="About me" i={0}>
-            {ABOUT.map((p) => (
-              <p className="g-p" key={p.slice(0, 20)}>
-                {p}
-              </p>
-            ))}
-          </Block>
-
-          <Block title="Education" i={2}>
-            <ul className="g-list">
-              {EDUCATION.map((e) => (
-                <li key={e.school}>
-                  <strong>{e.school}</strong>
-                  <span>{e.what}</span>
-                </li>
-              ))}
-            </ul>
-          </Block>
-
-          <Block title="Contact" i={4}>
-            <a className="g-email" href={LINKS.email}>
-              nehasusan369@gmail.com
+    <div className="glance-sheet" role="dialog" aria-modal="true" aria-label="At a glance">
+      <main className="glance">
+        <header className="g-intro">
+          <img className="g-photo" src={PHOTO} alt="Neha Susan Manoj among bougainvillea" />
+          <div className="g-who">
+            <span className="status-chip">
+              <span className="dot" aria-hidden="true" /> Open to Product Management roles
+            </span>
+            <h1 className="g-name">Neha Susan Manoj</h1>
+            <p className="g-tag">Product manager who builds · Hyderabad, India</p>
+          </div>
+          <div className="g-actions">
+            <a className="primary" href={LINKS.resume} target="_blank" rel="noreferrer">
+              Download resume ↓
             </a>
-            <div className="g-contact">
-              <a href={LINKS.linkedin} target="_blank" rel="noreferrer">
-                LinkedIn
-              </a>
-              <a href={LINKS.github} target="_blank" rel="noreferrer">
-                GitHub
-              </a>
-              <a href={LINKS.medium} target="_blank" rel="noreferrer">
-                Medium
-              </a>
-              <a className="primary" href={LINKS.resume} target="_blank" rel="noreferrer">
-                Download resume ↓
-              </a>
-            </div>
-          </Block>
-          <Block title="Achievements" i={5}>
-            <ul className="g-ach">
-              {achievements.map((a) => (
-                <li key={a.title}>
-                  <strong>{a.title}</strong>
-                  {a.desc && <span>{a.desc}</span>}
-                </li>
+            <a href={LINKS.email}>nehasusan369@gmail.com</a>
+            <a href={LINKS.linkedin} target="_blank" rel="noreferrer">
+              LinkedIn ↗
+            </a>
+          </div>
+        </header>
+
+        <div className="g-grid">
+          <div className="g-col">
+            <Block title="About me" i={0} onOpen={() => onJump('me', 0)}>
+              {ABOUT.map((p) => (
+                <p className="g-p" key={p.slice(0, 20)}>
+                  {p}
+                </p>
               ))}
-            </ul>
-          </Block>
-        </div>
+            </Block>
 
-        <div className="g-col">
-          <Block title="Work experience" i={1}>
-            {TIMELINE.map((g) => (
-              <div className="g-years" key={g.years}>
-                <span className="g-year">• {g.years}</span>
-                {g.roles.map((r) => (
-                  <div className="g-role" key={r.company + r.role}>
-                    <span className="g-company">
-                      {r.company}
-                      {r.when && <small>{r.when}</small>}
-                    </span>
-                    <span className="g-line" aria-hidden="true" />
-                    <span className="g-title">{r.role}</span>
-                  </div>
+            <Block title="Education" i={2} onOpen={() => onJump('education', 0)}>
+              <ul className="g-list">
+                {EDUCATION.map((e) => (
+                  <li key={e.school}>
+                    <button
+                      type="button"
+                      className="g-link"
+                      onClick={() => onJump('education', Math.max(0, eduIndex(e.school)))}
+                    >
+                      <strong>{e.school}</strong>
+                      <span>{e.what}</span>
+                    </button>
+                  </li>
                 ))}
-              </div>
-            ))}
-          </Block>
+              </ul>
+            </Block>
+          </div>
 
-          <Block title="Skills" i={3}>
-            <div className="g-skills">
-              {skills.map((s) => (
-                <div className="g-skill" key={s.title}>
-                  <span className="g-skill-k">{s.title}</span>
-                  <span className="g-skill-v">{s.tags.join(' · ')}</span>
+          <div className="g-col">
+            <Block title="Work experience" i={1} onOpen={() => onJump('experience', 0)}>
+              {TIMELINE.map((g) => (
+                <div className="g-years" key={g.years}>
+                  <span className="g-year">• {g.years}</span>
+                  {g.roles.map((r) => (
+                    <button
+                      type="button"
+                      className="g-role g-link"
+                      key={r.company + r.role}
+                      onClick={() => onJump('experience', Math.max(0, roleIndex(r.company)))}
+                    >
+                      <span className="g-company">
+                        {r.company}
+                        {r.when && <small>{r.when}</small>}
+                      </span>
+                      <span className="g-line" aria-hidden="true" />
+                      <span className="g-title">{r.role}</span>
+                      <span className="g-go" aria-hidden="true">
+                        →
+                      </span>
+                    </button>
+                  ))}
                 </div>
               ))}
-            </div>
-          </Block>
+            </Block>
+          </div>
         </div>
-      </div>
-    </main>
+
+        <Block title="Skills" i={3} className="g-wide" onOpen={() => onJump('skills', 0)}>
+          <div className="g-skills">
+            {skills.map((s, i) => (
+              <button type="button" className="g-skill g-link" key={s.title} onClick={() => onJump('skills', i)}>
+                <span className="g-skill-k">{s.title}</span>
+                <span className="g-skill-v">{s.tags.join(' · ')}</span>
+              </button>
+            ))}
+          </div>
+        </Block>
+
+        <Block title="Achievements" i={4} className="g-wide" onOpen={() => onJump('achievements', 0)}>
+          <ul className="g-ach">
+            {achievements.map((a, i) => (
+              <li key={a.title}>
+                <button type="button" className="g-link" onClick={() => onJump('achievements', i)}>
+                  <strong>{a.title}</strong>
+                  {a.desc && <span>{a.desc}</span>}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </Block>
+      </main>
+    </div>
   );
 }

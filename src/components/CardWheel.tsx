@@ -68,11 +68,16 @@ export const CardWheel = forwardRef<WheelHandle, CardWheelProps>(function CardWh
     const layout = () => {
       const w = window.innerWidth;
       const h = window.innerHeight;
-      const cw = clamp(w * 0.15, 140, 230);
+      // Start the top card a fixed gap below wherever the hero text actually ends,
+      // and size cards from the room left so the dial stays on screen.
+      const heroEnd = document.querySelector('.hero-bottom')?.getBoundingClientRect().bottom ?? h * 0.5;
+      const gap = w < 700 ? 30 : 48;
+      const room = h - heroEnd - gap - (w < 700 ? 80 : 100);
+      const cw = clamp(Math.min(w < 700 ? w * 0.38 : w * 0.15, (room / 1.1) * 0.75), w < 700 ? 118 : 130, 230);
       const ch = cw * (4 / 3);
       const radius = Math.max(560, w * 0.62);
       const step = ((cw * 0.86) / radius) * (180 / Math.PI);
-      const activeCenter = h * (w < 700 ? 0.7 : 0.69);
+      const activeCenter = heroEnd + gap + (ch * 1.1) / 2;
       geo.current = { cw, ch, radius, step, pivotY: activeCenter + radius };
       const wheel = wheelRef.current;
       if (wheel) {

@@ -7,13 +7,17 @@ interface DeckProps {
   section: Section;
   index: number;
   total: number;
+  /** Card to centre and turn over to its details once the deck has dealt out. */
+  focus?: number;
+  /** Close-button label when the deck should lead back somewhere else (e.g. At a glance). */
+  backLabel?: string;
   onClose: () => void;
 }
 
 const HEADS = ['magenta', 'navy', 'paper'] as const;
 
 /** A set of cards that pops out of the wheel for one section. */
-export function Deck({ section, index, total, onClose }: DeckProps) {
+export function Deck({ section, index, total, focus, backLabel, onClose }: DeckProps) {
   const rowRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
 
@@ -30,6 +34,14 @@ export function Deck({ section, index, total, onClose }: DeckProps) {
       document.removeEventListener('keydown', onKey);
     };
   }, [onClose]);
+
+  // Centre the focused card straight away so it deals in already in view.
+  useEffect(() => {
+    const row = rowRef.current;
+    if (focus === undefined || !row) return;
+    const card = row.children[focus] as HTMLElement | undefined;
+    if (card) row.scrollLeft = card.offsetLeft - (row.clientWidth - card.offsetWidth) / 2;
+  }, [focus]);
 
   const scrollBy = (dir: number) => {
     const row = rowRef.current;
@@ -56,15 +68,21 @@ export function Deck({ section, index, total, onClose }: DeckProps) {
             <button type="button" className="round-btn" onClick={() => scrollBy(1)} aria-label="Scroll cards right">
               →
             </button>
-            <button type="button" className="round-btn close" ref={closeRef} onClick={onClose} aria-label="Close">
-              ✕
-            </button>
+            {backLabel ? (
+              <button type="button" className="pill-btn" ref={closeRef} onClick={onClose}>
+                ← {backLabel}
+              </button>
+            ) : (
+              <button type="button" className="round-btn close" ref={closeRef} onClick={onClose} aria-label="Close">
+                ✕
+              </button>
+            )}
           </div>
         </div>
 
         <div className="deck-row" ref={rowRef}>
           {section.files.map((f, i) => (
-            <DeckCard key={`${section.id}-${i}`} file={f} i={i} />
+            <DeckCard key={`${section.id}-${i}`} file={f} i={i} focused={i === focus} />
           ))}
         </div>
         <p className="deck-hint">Tap a card to flip it</p>
@@ -73,8 +91,15 @@ export function Deck({ section, index, total, onClose }: DeckProps) {
   );
 }
 
-function DeckCard({ file, i }: { file: FolderFile; i: number }) {
+function DeckCard({ file, i, focused = false }: { file: FolderFile; i: number; focused?: boolean }) {
   const [flipped, setFlipped] = useState(false);
+
+  // Arriving from At a glance: let the card land, then turn it over to its details.
+  useEffect(() => {
+    if (!focused) return;
+    const t = window.setTimeout(() => setFlipped(true), 750 + Math.min(i, 10) * 60);
+    return () => clearTimeout(t);
+  }, [focused, i]);
   const tiltRef = useTilt<HTMLDivElement>(true, 9);
   const head = HEADS[i % HEADS.length];
   // a hand-dealt look: small alternating rotations that straighten on hover
@@ -83,7 +108,7 @@ function DeckCard({ file, i }: { file: FolderFile; i: number }) {
   const firstWord = file.title.split(/[\s,:]/)[0];
 
   return (
-    <div className="dcard" style={style}>
+    <div className={`dcard${focused ? ' focused' : ''}`} style={style}>
       {/* hit area (stable) → tilt + hover lift layer → flip layer */}
       <div className="dcard-hit" ref={tiltRef}>
         <div className="dcard-tilt">

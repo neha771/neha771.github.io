@@ -3,56 +3,75 @@ import { Hero } from './components/Hero';
 import { CardWheel, type WheelHandle } from './components/CardWheel';
 import { Deck } from './components/Deck';
 import { Glance } from './components/Glance';
-import { TopBar, type View } from './components/TopBar';
+import { TopBar } from './components/TopBar';
 import { LINKS, SECTIONS } from './data/sections';
 
-// The view lives in the URL hash so "At a glance" can be shared and the back button works.
-const viewFromUrl = (): View => (window.location.hash === '#glance' ? 'glance' : 'cards');
+interface OpenDeck {
+  index: number;
+  /** Card to scroll to and show flipped (when arriving from "At a glance"). */
+  focus?: number;
+  /** Closing the deck goes back to the glance sheet instead of the wheel. */
+  fromGlance?: boolean;
+}
+
+// "At a glance" lives in the URL hash so it can be shared and the back button closes it.
+const glanceInUrl = () => window.location.hash === '#glance';
 
 export default function App() {
   const stageRef = useRef<HTMLElement>(null);
   const wheelRef = useRef<WheelHandle>(null);
-  const [open, setOpen] = useState<number | null>(null);
-  const [view, setViewState] = useState<View>(viewFromUrl);
-  const close = useCallback(() => setOpen(null), []);
+  const [open, setOpen] = useState<OpenDeck | null>(null);
+  const [glance, setGlanceState] = useState(glanceInUrl);
 
-  const setView = (v: View) => {
-    if (v === view) return;
-    window.history.pushState(null, '', v === 'glance' ? '#glance' : window.location.pathname);
-    setViewState(v);
+  const setGlance = useCallback((on: boolean, push = true) => {
+    const url = on ? '#glance' : window.location.pathname;
+    if (push) window.history.pushState(null, '', url);
+    else window.history.replaceState(null, '', url);
+    setGlanceState(on);
+  }, []);
+
+  const closeDeck = useCallback(() => {
+    if (open?.fromGlance) setGlance(true, false);
     setOpen(null);
-    window.scrollTo({ top: 0 });
-  };
+  }, [open, setGlance]);
+
+  /** From the glance sheet: jump into a section's deck with one card flipped open. */
+  const jumpTo = useCallback(
+    (sectionId: string, focus: number) => {
+      const index = SECTIONS.findIndex((s) => s.id === sectionId);
+      if (index < 0) return;
+      setGlance(false, false);
+      setOpen({ index, focus, fromGlance: true });
+    },
+    [setGlance]
+  );
 
   useEffect(() => {
-    const onPop = () => setViewState(viewFromUrl());
+    const onPop = () => setGlanceState(glanceInUrl());
     window.addEventListener('popstate', onPop);
     return () => window.removeEventListener('popstate', onPop);
   }, []);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (open !== null || view !== 'cards') return;
+      if (open !== null) return;
+      if (glance) {
+        if (e.key === 'Escape') setGlance(false);
+        return;
+      }
       if (e.key === 'ArrowRight') wheelRef.current?.go(1);
       else if (e.key === 'ArrowLeft') wheelRef.current?.go(-1);
-      else if (e.key === 'Enter' && document.activeElement === document.body) setOpen(wheelRef.current?.active() ?? 0);
+      else if (e.key === 'Enter' && document.activeElement === document.body)
+        setOpen({ index: wheelRef.current?.active() ?? 0 });
     };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
-  }, [open, view]);
-
-  if (view === 'glance') {
-    return (
-      <>
-        <TopBar view={view} onView={setView} />
-        <Glance />
-      </>
-    );
-  }
+  }, [open, glance, setGlance]);
 
   return (
     <>
-      <TopBar view={view} onView={setView} />
+      <TopBar glance={glance} onToggleGlance={() => setGlance(!glance)} />
+
       {/* Tall section: scrolling through it turns the card wheel while the stage stays pinned. */}
       <section
         className="stage"
@@ -62,7 +81,12 @@ export default function App() {
       >
         <div className="stage-pin">
           <Hero onPrev={() => wheelRef.current?.go(-1)} onNext={() => wheelRef.current?.go(1)} />
-          <CardWheel ref={wheelRef} sections={SECTIONS} stageRef={stageRef} onOpen={setOpen} />
+          <CardWheel
+            ref={wheelRef}
+            sections={SECTIONS}
+            stageRef={stageRef}
+            onOpen={(index) => setOpen({ index })}
+          />
         </div>
       </section>
 
@@ -86,7 +110,18 @@ export default function App() {
         <span className="footer-note">© 2026 Neha Susan Manoj</span>
       </footer>
 
-      {open !== null && <Deck section={SECTIONS[open]} index={open} total={SECTIONS.length} onClose={close} />}
+      {glance && <Glance onJump={jumpTo} />}
+
+      {open !== null && (
+        <Deck
+          section={SECTIONS[open.index]}
+          index={open.index}
+          total={SECTIONS.length}
+          focus={open.focus}
+          backLabel={open.fromGlance ? 'Back to At a glance' : undefined}
+          onClose={closeDeck}
+        />
+      )}
     </>
   );
 }
