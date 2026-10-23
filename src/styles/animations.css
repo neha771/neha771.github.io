@@ -64,6 +64,15 @@
 .game-btn{transition:scale var(--dur-1) var(--ease-out-quart)}
 .game-btn:active{scale:.95}
 
+/* laptop prompt: sheet rises from the bottom over a fading scrim (enter only; dismiss is instant) */
+@keyframes scrimIn{from{opacity:0}to{opacity:1}}
+@keyframes sheetUp{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:none}}
+.laptop-prompt{animation:scrimIn var(--dur-3) ease both}
+.lp-card{animation:sheetUp 320ms var(--ease-out-quart) 80ms both}
+.lp-icon{display:inline-block;animation:wave 1.4s ease-in-out .6s 1}
+.lp-btn{transition:scale var(--dur-1) var(--ease-out-quart)}
+.lp-btn:active{scale:.97}
+
 /* window contents cascade in (capped so long folders don't drag on) */
 .win-body > .file{animation:cardIn 380ms var(--ease-out-quart) both;animation-delay:calc(min(var(--i,0),8) * 40ms + 60ms)}
 

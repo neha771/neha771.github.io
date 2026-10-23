@@ -17,7 +17,7 @@ interface UseDraggableOptions {
  * drag with a tap-vs-drag threshold, disabled below the 860px mobile breakpoint.
  * `handleRef` is where the pointerdown listener attaches; `targetRef` is what
  * gets repositioned (they're the same element for desktop items, but different
- * for the window — the bar is the handle, the window is the target).
+ * for the window: the bar is the handle, the window is the target).
  */
 export function useDraggable<H extends HTMLElement = HTMLElement, T extends HTMLElement = H>(
   options: UseDraggableOptions = {}

@@ -5,6 +5,7 @@ import { Desktop } from './components/Desktop';
 import { Backdrop } from './components/Backdrop';
 import { Window } from './components/Window';
 import { Hint } from './components/Hint';
+import { LaptopPrompt } from './components/LaptopPrompt';
 import { useTheme } from './hooks/useTheme';
 import { useWindowManager } from './hooks/useWindowManager';
 
@@ -21,6 +22,7 @@ export default function App() {
       <Backdrop show={isOpen} onClick={closeWin} />
       <Window openKey={openKey} parentKey={parentKey} onClose={closeWin} onOpenWin={openWin} />
       <Hint />
+      <LaptopPrompt />
     </>
   );
 }

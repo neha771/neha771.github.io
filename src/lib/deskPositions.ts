@@ -24,6 +24,6 @@ export function savePosition(index: number, pos: DeskPosition) {
     all[index] = pos;
     localStorage.setItem(STORAGE_KEY, JSON.stringify(all));
   } catch {
-    // localStorage unavailable — position just won't persist
+    // localStorage unavailable, so the position just won't persist
   }
 }

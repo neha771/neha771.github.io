@@ -26,13 +26,13 @@ function saveBest(n: number) {
   try {
     localStorage.setItem(BEST_KEY, String(n));
   } catch {
-    // storage unavailable — best score just won't persist
+    // storage unavailable, so the best score just won't persist
   }
 }
 
 function verdict(score: number) {
   if (score === 0) return 'Neha slipped away! Give it another go 🙈';
-  if (score < 8) return "Warm-up round — she's quick!";
+  if (score < 8) return "Warm-up round. She's quick!";
   if (score < 16) return 'Nice reflexes! 👀';
   if (score < 26) return 'Okay, you’re good at this. ⚡️';
   return 'Product-manager-level focus 🏆';

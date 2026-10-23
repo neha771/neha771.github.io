@@ -89,5 +89,8 @@ html,body{height:100%}
 :root[data-theme="light"] .game-overlay{background:rgba(252,251,248,.72)}
 :root[data-theme="light"] .hud-time{background:rgba(34,34,32,.06)}
 :root[data-theme="light"] .hole-back{background:radial-gradient(ellipse at 50% 40%,rgba(60,50,30,.45),rgba(60,50,30,.15) 70%)}
+:root[data-theme="light"] .laptop-prompt{background:rgba(45,65,90,.32)}
+:root[data-theme="light"] .lp-card{background:linear-gradient(170deg,#fff,#fbfaf7);border-color:rgba(34,34,32,.13)}
+:root[data-theme="light"] .lp-btn{background:rgba(34,34,32,.05);border-color:rgba(34,34,32,.14)}
 :root[data-theme="light"] .hint{background:rgba(255,255,255,.9);border-color:rgba(34,34,32,.14);color:var(--ink-mid)}
 :root[data-theme="light"] .hint .k{color:var(--gold)}

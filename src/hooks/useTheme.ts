@@ -3,7 +3,7 @@ import { burst } from '../lib/burst';
 
 export type Theme = 'dark' | 'light';
 
-// All colour tokens for each mode — set as inline styles on root so they
+// All colour tokens for each mode, set as inline styles on root so they
 // override any CSS-cascade issues and guarantee resolution on var() calls.
 const THEME_VARS: Record<Theme, Record<string, string>> = {
   dark: {
@@ -24,7 +24,7 @@ const THEME_VARS: Record<Theme, Record<string, string>> = {
   },
 };
 
-// Light-mode folder colours (muted sand / sky / sage) — keyed by FolderKey.
+// Light-mode folder colours (muted sand / sky / sage), keyed by FolderKey.
 export const LIGHT_FOLDER_COLORS: Record<string, { f1: string; f2: string; tab: string }> = {
   experience: { f1: '#ece8de', f2: '#d2caba', tab: '#b9ae99' },
   hackathons: { f1: '#f6e4d6', f2: '#eccbb0', tab: '#dcae8a' },

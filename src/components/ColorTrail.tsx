@@ -95,7 +95,7 @@ export function ColorTrail() {
     };
 
     const onMove = (e: PointerEvent) => {
-      // Stay quiet while a folder window is open — the trail is for the desk.
+      // Stay quiet while a folder window is open: the trail is for the desk.
       if (document.querySelector('.window.show')) return;
       const dist = lastX < 0 ? 0 : Math.hypot(e.clientX - lastX, e.clientY - lastY);
       lastX = e.clientX;
