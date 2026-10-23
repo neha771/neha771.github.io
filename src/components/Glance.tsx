@@ -1,6 +1,8 @@
 import { useEffect, type CSSProperties, type ReactNode } from 'react';
 import { FOLDERS } from '../data/folders';
-import { LINKS, PHOTO } from '../data/sections';
+import type { FolderFile } from '../data/folders';
+import { LINKS } from '../data/sections';
+import facePhoto from '../assets/neha-face.webp';
 
 const ABOUT = [
   "I'm Neha, a product manager who doesn't stop at the idea. I like sitting with the people who live a problem, writing it down clearly, and then building it with engineering until it is real and in people's hands.",
@@ -70,6 +72,30 @@ function Block({ title, i, children, className = '', onOpen }: BlockProps) {
   );
 }
 
+/** A row of project tiles; each opens its card in the matching deck. */
+function ProjectGroup({ label, items, onPick }: { label: string; items: FolderFile[]; onPick: (i: number) => void }) {
+  return (
+    <div className="g-proj-group">
+      <span className="g-sublabel">{label}</span>
+      <div className="g-projects">
+        {items.map((p, i) => (
+          <button type="button" className="g-proj" key={p.title} onClick={() => onPick(i)}>
+            <span className="g-proj-thumb">
+              {p.img ? (
+                <img src={p.img} alt="" loading="lazy" draggable={false} />
+              ) : (
+                <span className="g-proj-word">{p.title.split(/[\s,:]/)[0]}</span>
+              )}
+            </span>
+            <span className="g-proj-title">{p.title}</span>
+            {p.desc && <span className="g-proj-desc">{p.desc}</span>}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 interface GlanceProps {
   /** Open a section's deck with one card flipped to its details. */
   onJump: (sectionId: string, focus: number) => void;
@@ -89,12 +115,14 @@ export function Glance({ onJump }: GlanceProps) {
   }, []);
   const skills = FOLDERS.skills.files ?? [];
   const achievements = FOLDERS.achievements.files ?? [];
+  const projects = FOLDERS.productResearch.files ?? [];
+  const hackathons = FOLDERS.hackathons.files ?? [];
 
   return (
     <div className="glance-sheet" role="dialog" aria-modal="true" aria-label="At a glance">
       <main className="glance">
         <header className="g-intro">
-          <img className="g-photo" src={PHOTO} alt="Neha Susan Manoj among bougainvillea" />
+          <img className="g-photo" src={facePhoto} alt="Neha Susan Manoj" />
           <div className="g-who">
             <span className="status-chip">
               <span className="dot" aria-hidden="true" /> Open to Product Management roles
@@ -170,7 +198,12 @@ export function Glance({ onJump }: GlanceProps) {
           </div>
         </div>
 
-        <Block title="Skills" i={3} className="g-wide" onOpen={() => onJump('skills', 0)}>
+        <Block title="Projects" i={3} className="g-wide" onOpen={() => onJump('projects', 0)}>
+          <ProjectGroup label="Product & research" items={projects} onPick={(i) => onJump('projects', i)} />
+          <ProjectGroup label="Hackathon builds" items={hackathons} onPick={(i) => onJump('hackathons', i)} />
+        </Block>
+
+        <Block title="Skills" i={4} className="g-wide" onOpen={() => onJump('skills', 0)}>
           <div className="g-skills">
             {skills.map((s, i) => (
               <button type="button" className="g-skill g-link" key={s.title} onClick={() => onJump('skills', i)}>
@@ -181,7 +214,7 @@ export function Glance({ onJump }: GlanceProps) {
           </div>
         </Block>
 
-        <Block title="Achievements" i={4} className="g-wide" onOpen={() => onJump('achievements', 0)}>
+        <Block title="Achievements" i={5} className="g-wide" onOpen={() => onJump('achievements', 0)}>
           <ul className="g-ach">
             {achievements.map((a, i) => (
               <li key={a.title}>
