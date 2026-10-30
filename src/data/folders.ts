@@ -1,3 +1,4 @@
+import imgGiftsense from '../assets/images/giftsense.webp';
 import imgHci from '../assets/images/hci.webp';
 import imgOotd from '../assets/images/ootd.png';
 import imgUrm from '../assets/images/urm.jpg';
@@ -93,6 +94,7 @@ export const FOLDERS: Record<FolderKey, FolderDef> = {
     f1: '#2a3c63', f2: '#3f5e96', tab: '#4d6fa8',
     desc: 'Case studies, research projects & 0→1 builds',
     files: [
+      { ico: '🎁', title: 'GiftSense: AI Gift Recommender', desc: 'AI for PMs capstone. Built with Claude Code, using the Gemini API for recommendations and Cloudflare AI for images, with system prompts and guardrails. Ran LLM evaluations on a 50-case golden dataset (v1 gift-fit 72.5%) and fixed 12 issues it found; v2 matched the expected action on 46 of 50 cases, with all 45 AI answers passing every hard check.', tags: ['AI', 'LLM Evals', 'Gemini', 'Claude Code'], link: 'https://giftsense-bzjm.vercel.app', img: imgGiftsense },
       { ico: '🚆', title: 'Connecting Train Journeys (IRCTC)', desc: 'Sized an underserved traveller problem with a 94-response survey & live KPI dashboard (19.1% had missed a connection, 63.2% would pay). Validated demand with a fake-door test: 159 sessions, 22 of 23 price picks chose a paid tier.', tags: ['Market Research', 'Fake-Door Test', 'Validation'], link: 'https://mrv-tau.vercel.app/', img: imgIrctc },
       { ico: '🛣️', title: 'Designing for Indian Roads', desc: 'HCI study on usability challenges of Indian road conditions → interaction principles & interface recommendations.', tags: ['HCI', 'Research', 'Interaction'], link: 'https://drive.google.com/file/d/13301HTq8iZ64Zr3dPrxyB67qYBWju-Eg/view', img: imgHci },
       { ico: '🤖', title: 'Emotional Sharing with AI Tools', desc: 'Mixed-methods study on how adults 18–40 emotionally engage with AI conversational tools, turned into design recommendations.', tags: ['User Research', 'Card Sorting'], link: 'https://drive.google.com/file/d/19n12xb1Io1uN-WviCQYlIfzH3ArvzFib/view', img: imgUrm },
