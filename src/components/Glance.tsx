@@ -6,7 +6,7 @@ import facePhoto from '../assets/neha-face.webp';
 
 const ABOUT = [
   "I'm Neha, a product manager who doesn't stop at the idea. I like sitting with the people who live a problem, writing it down clearly, and then building it with engineering until it is real and in people's hands.",
-  "I started as a software engineer at Publicis Sapient, ran a program for 200+ women founders at Kerala Startup Mission and grew a 15,000-member tech community at TinkerHub. Today I'm a PM intern at Qwipo, co-founder of Polaroids and an M.Tech student in Product Design & Management at IIIT Hyderabad.",
+  "I started as a software engineer at Publicis Sapient, ran a program for 200+ women founders at Kerala Startup Mission and grew a 15,000-member tech community at TinkerHub. I was a PM intern at Qwipo until November 2026. Today I'm co-founder of Polaroids and an M.Tech student in Product Design & Management at IIIT Hyderabad.",
 ];
 
 interface Role {
@@ -19,7 +19,7 @@ const TIMELINE: { years: string; roles: Role[] }[] = [
   {
     years: '2026 – Now',
     roles: [
-      { company: 'Qwipo', role: 'Product Manager Intern', when: 'May 2026' },
+      { company: 'Qwipo', role: 'Product Manager Intern', when: 'May – Nov 2026' },
       { company: 'Polaroids', role: 'Co-Founder, Product & Growth', when: 'Aug 2026' },
       { company: 'Directure', role: 'Product Manager Intern', when: 'Mar – May 2026' },
     ],

@@ -16,7 +16,7 @@ export const LINKS = {
 };
 
 export const INTRO =
-  "I'm Neha, a product manager who doesn't stop at the idea. I talk to the people living the problem, then build it into something real. PM intern at Qwipo, co-founder of Polaroids and M.Tech student at IIIT Hyderabad.";
+  "I'm Neha, a product manager who doesn't stop at the idea. I talk to the people living the problem, then build it into something real. Former PM intern at Qwipo, co-founder of Polaroids and M.Tech student at IIIT Hyderabad.";
 
 /** How a card on the wheel is dressed. */
 export type CardTone = 'photo' | 'image' | 'magenta' | 'navy' | 'paper';
@@ -48,7 +48,7 @@ const ME: FolderFile[] = [
     ico: '',
     title: 'Right now',
     sub: '2026',
-    desc: 'Product Manager Intern at Qwipo, owning B2B commerce problems from discovery to delivery. Co-founder for Product & Growth at Polaroids, a travel photo map on iOS.',
+    desc: 'Co-founder for Product & Growth at Polaroids, a travel photo map on iOS, and an M.Tech student at IIIT Hyderabad. Previously a Product Manager Intern at Qwipo (May to Nov 2026), owning B2B commerce problems from discovery to delivery.',
     tags: ['Qwipo', 'Polaroids'],
   },
   {

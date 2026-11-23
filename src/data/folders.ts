@@ -72,8 +72,8 @@ export const FOLDERS: Record<FolderKey, FolderDef> = {
     name: 'Experience', em: '💼',
     f1: '#3a2c4e', f2: '#5a3d82', tab: '#6b4a9a',
     files: [
-      { ico: '🛒', title: 'Product Manager Intern', sub: 'Qwipo · May 2026 – Present',
-        desc: 'Owning problems end-to-end on an ONDC-enabled B2B commerce platform. Shipped the serviceability beat feature (100+ distributors, Rs. 45K/month saved each), cut a 4–5 day vendor workflow to <2 hrs with Claude Skills automations, and launched a 0→1 vendor onboarding portal.', tags: ['0→1', 'AI Automation', 'PRDs', 'Field Research'], img: imgQwipo },
+      { ico: '🛒', title: 'Product Manager Intern', sub: 'Qwipo · May 2026 – Nov 2026',
+        desc: 'Owned problems end-to-end on an ONDC-enabled B2B commerce platform. Shipped the serviceability beat feature (100+ distributors, Rs. 45K/month saved each), cut a 4–5 day vendor workflow to <2 hrs with Claude Skills automations, and launched a 0→1 vendor onboarding portal.', tags: ['0→1', 'AI Automation', 'PRDs', 'Field Research'], img: imgQwipo },
       { ico: '📸', title: 'Co-Founder, Product & Growth', sub: 'Polaroids (iOS app) · Aug 2026 – Present',
         desc: 'Acquired 150+ users in the first month of GTM via creator partnerships, brand collaborations & content. Selected for Velocity Cohort 1 by y0.', tags: ['Founder', 'GTM', 'Growth'], img: imgPolaroids },
       { ico: '🧭', title: 'Product Manager Intern', sub: 'Directure · Mar 2026 – May 2026',
