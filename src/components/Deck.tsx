@@ -105,7 +105,7 @@ function DeckCard({ file, i, focused = false }: { file: FolderFile; i: number; f
   // a hand-dealt look: small alternating rotations that straighten on hover
   const rot = ((i % 2 ? 1 : -1) * (1.2 + (i % 3) * 0.6)).toFixed(1);
   const style = { '--i': Math.min(i, 10), '--r': `${rot}deg` } as CSSProperties;
-  const firstWord = file.title.split(/[\s,:]/)[0];
+  const firstWord = file.word ?? file.title.split(/[\s,:]/)[0];
 
   return (
     <div className={`dcard${focused ? ' focused' : ''}`} style={style}>

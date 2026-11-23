@@ -130,7 +130,7 @@ function ProjectGroup({ label, items, onPick }: { label: string; items: FolderFi
               {p.img ? (
                 <img src={p.img} alt="" loading="lazy" draggable={false} />
               ) : (
-                <span className="g-proj-word">{p.title.split(/[\s,:]/)[0]}</span>
+                <span className="g-proj-word">{p.word ?? p.title.split(/[\s,:]/)[0]}</span>
               )}
             </span>
             <span className="g-proj-title">{p.title}</span>

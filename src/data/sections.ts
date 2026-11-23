@@ -1,5 +1,5 @@
 import { FOLDERS, type FolderFile } from './folders';
-import photo from '../assets/neha-bougainvillea.webp';
+import photo from '../assets/neha-portrait.webp';
 import imgTinkerhub from '../assets/images/tinkerhub.webp';
 import imgIrctc from '../assets/images/irctc.webp';
 import imgCaseathon from '../assets/images/caseathon.webp';
