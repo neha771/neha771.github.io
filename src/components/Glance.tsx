@@ -36,7 +36,11 @@ const TIMELINE: { years: string; roles: Role[] }[] = [
 ];
 
 const EDUCATION = [
-  { school: 'IIIT Hyderabad', what: "M.Tech, Product Design & Management · 2025 – 2027 · CGPA 8.61 · Dean's List" },
+  {
+    school: 'IIIT Hyderabad',
+    what: 'M.Tech, Product Design & Management · 2025 – 2027 · CGPA 8.61',
+    badge: "Dean's List Award · top academic performance",
+  },
   { school: 'GEC Thrissur', what: 'B.Tech, Computer Science · 2019 – 2023 · CGPA 8.81' },
 ];
 
@@ -118,13 +122,27 @@ function Block({ title, i, children, className = '', onOpen, collapsible = false
   );
 }
 
-/** A row of project tiles; each opens its card in the matching deck. */
-function ProjectGroup({ label, items, onPick }: { label: string; items: FolderFile[]; onPick: (i: number) => void }) {
+/** A grid of project tiles; each opens its card in the matching deck. Long lists show a featured few first. */
+function ProjectGroup({
+  label,
+  items,
+  onPick,
+  featured = items.length,
+}: {
+  label: string;
+  items: FolderFile[];
+  onPick: (i: number) => void;
+  featured?: number;
+}) {
+  const [all, setAll] = useState(false);
+  const hidden = items.length - featured;
+  const shown = all || hidden <= 0 ? items : items.slice(0, featured);
+
   return (
     <div className="g-proj-group">
       <span className="g-sublabel">{label}</span>
       <div className="g-projects">
-        {items.map((p, i) => (
+        {shown.map((p, i) => (
           <button type="button" className="g-proj" key={p.title} onClick={() => onPick(i)}>
             <span className="g-proj-thumb">
               {p.img ? (
@@ -132,12 +150,18 @@ function ProjectGroup({ label, items, onPick }: { label: string; items: FolderFi
               ) : (
                 <span className="g-proj-word">{p.word ?? p.title.split(/[\s,:]/)[0]}</span>
               )}
+              {p.badge && <span className="badge-pill">{p.badge}</span>}
             </span>
             <span className="g-proj-title">{p.title}</span>
             {p.desc && <span className="g-proj-desc">{p.desc}</span>}
           </button>
         ))}
       </div>
+      {hidden > 0 && (
+        <button type="button" className="g-more g-more-projects" aria-expanded={all} onClick={() => setAll((v) => !v)}>
+          {all ? 'Show fewer' : `Show ${hidden} more projects`}
+        </button>
+      )}
     </div>
   );
 }
@@ -208,6 +232,11 @@ export function Glance({ onJump }: GlanceProps) {
                     >
                       <strong>{e.school}</strong>
                       <span>{e.what}</span>
+                      {e.badge && (
+                        <span className="g-honor">
+                          <span aria-hidden="true">★</span> {e.badge}
+                        </span>
+                      )}
                     </button>
                   </li>
                 ))}
@@ -252,7 +281,12 @@ export function Glance({ onJump }: GlanceProps) {
           summary={`${projects.length + hackathons.length} projects`}
           onOpen={() => onJump('projects', 0)}
         >
-          <ProjectGroup label="Product & research" items={projects} onPick={(i) => onJump('projects', i)} />
+          <ProjectGroup
+            label="Product & research"
+            items={projects}
+            featured={8}
+            onPick={(i) => onJump('projects', i)}
+          />
           <ProjectGroup label="Hackathon builds" items={hackathons} onPick={(i) => onJump('hackathons', i)} />
         </Block>
 

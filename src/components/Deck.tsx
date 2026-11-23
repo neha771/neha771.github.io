@@ -123,6 +123,7 @@ function DeckCard({ file, i, focused = false }: { file: FolderFile; i: number; f
               {file.img ? (
                 <div className="dcard-media">
                   <img src={file.img} alt="" loading="lazy" draggable={false} />
+                  {file.badge && <span className="badge-pill">{file.badge}</span>}
                 </div>
               ) : (
                 <div className={`dcard-media type head-${head}`}>

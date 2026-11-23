@@ -41,6 +41,8 @@ export interface FolderFile {
   img?: string;
   /** Big headline word on image-less cards; defaults to the title's first word. */
   word?: string;
+  /** Small pill shown on the card image, e.g. "Complete app". */
+  badge?: string;
 }
 
 export interface FolderDef {
@@ -96,16 +98,16 @@ export const FOLDERS: Record<FolderKey, FolderDef> = {
     f1: '#2a3c63', f2: '#3f5e96', tab: '#4d6fa8',
     desc: 'Case studies, research projects & 0→1 builds',
     files: [
+      { ico: '👗', title: 'OOTD', badge: 'Complete app', desc: 'A complete iOS app, live on the App Store. A private outfit diary with polaroid-style daily photo logging, occasion & location tags and no social feed. Grew to 50+ users through word of mouth.', tags: ['Complete app', '0→1', 'iOS', 'App Store'], link: 'https://ootd-app-topaz.vercel.app/', img: imgOotd },
       { ico: '🎁', title: 'GiftSense: AI Gift Recommender', desc: 'AI for PMs capstone. Built with Claude Code, using the Gemini API for recommendations and Cloudflare AI for images, with system prompts and guardrails. Ran LLM evaluations on a 50-case golden dataset (v1 gift-fit 72.5%) and fixed 12 issues it found; v2 matched the expected action on 46 of 50 cases, with all 45 AI answers passing every hard check.', tags: ['AI', 'LLM Evals', 'Gemini', 'Claude Code'], link: 'https://giftsense-bzjm.vercel.app', img: imgGiftsense },
-      { ico: '💸', title: 'Early Stage Funding Strategies', word: 'Funding', desc: 'Academic project on funding strategies for early-stage startups.', tags: ['Startups', 'Funding', 'Strategy'] },
       { ico: '🚆', title: 'Connecting Train Journeys (IRCTC)', desc: 'Sized an underserved traveller problem with a 94-response survey & live KPI dashboard (19.1% had missed a connection, 63.2% would pay). Validated demand with a fake-door test: 159 sessions, 22 of 23 price picks chose a paid tier.', tags: ['Market Research', 'Fake-Door Test', 'Validation'], link: 'https://mrv-tau.vercel.app/', img: imgIrctc },
-      { ico: '🛣️', title: 'Designing for Indian Roads', desc: 'HCI study on usability challenges of Indian road conditions → interaction principles & interface recommendations.', tags: ['HCI', 'Research', 'Interaction'], link: 'https://drive.google.com/file/d/13301HTq8iZ64Zr3dPrxyB67qYBWju-Eg/view', img: imgHci },
       { ico: '🤖', title: 'Emotional Sharing with AI Tools', desc: 'Mixed-methods study on how adults 18–40 emotionally engage with AI conversational tools, turned into design recommendations.', tags: ['User Research', 'Card Sorting'], link: 'https://drive.google.com/file/d/19n12xb1Io1uN-WviCQYlIfzH3ArvzFib/view', img: imgUrm },
-      { ico: '👗', title: 'OOTD', desc: 'Private iOS outfit-diary app, live on the App Store. Polaroid-style daily photo logging with occasion & location tags and no social feed. Grew to 50+ users through word of mouth.', tags: ['0→1', 'iOS', 'App Store'], link: 'https://ootd-app-topaz.vercel.app/', img: imgOotd },
+      { ico: '🛣️', title: 'Designing for Indian Roads', desc: 'HCI study on usability challenges of Indian road conditions → interaction principles & interface recommendations.', tags: ['HCI', 'Research', 'Interaction'], link: 'https://drive.google.com/file/d/13301HTq8iZ64Zr3dPrxyB67qYBWju-Eg/view', img: imgHci },
+      { ico: '🕯️', title: 'Ember', desc: "A two-format luxury fragrance ecosystem for L'Oréal Brandstorm '26.", tags: ['Product Design', "L'Oréal"], link: 'https://drive.google.com/file/d/15JRh9G1y_Xgr6MGmNqxueK7LtoqeSp38/view?usp=sharing', img: imgBrandstorm },
       { ico: '🔄', title: 'SkillSwap', desc: 'Peer-to-peer skill exchange platform: product discovery, Figma wireframing & full-stack MERN build.', tags: ['0→1', 'Full Stack', 'Wireframing'], link: 'https://drive.google.com/file/d/1dPdX8xhUIIbWTVMqVriklOKalOiFoW-j/view', img: imgSkillswap },
+      { ico: '💸', title: 'Early Stage Funding Strategies', word: 'Funding', desc: 'Academic project on funding strategies for early-stage startups.', tags: ['Startups', 'Funding', 'Strategy'] },
       { ico: '🎨', title: 'Design Thinking Project', desc: 'A collaborative maker-experience platform built through the design thinking process.', tags: ['Design Thinking', 'IIIT-H'], link: 'https://drive.google.com/file/d/1Wb3ZXYt-Vw4KUOSokVyeIzdDtD68FGi9/view', img: imgDesignThinking },
       { ico: '💬', title: 'Vidya Vichar', desc: 'Interactive classroom Q&A system for real-time student engagement.', tags: ['Full Stack', 'Product'], link: 'https://github.com/Ishaan-Giri/VidyaVichar.git', img: imgVidyavichar },
-      { ico: '🕯️', title: 'Ember', desc: "A two-format luxury fragrance ecosystem for L'Oréal Brandstorm '26.", tags: ['Product Design', "L'Oréal"], link: 'https://drive.google.com/file/d/15JRh9G1y_Xgr6MGmNqxueK7LtoqeSp38/view?usp=sharing', img: imgBrandstorm },
       { ico: '📸', title: 'Instagram: PMF Case Study', desc: 'Product-market-fit teardown of Instagram.', tags: ['Product Strategy', 'PMF'], link: 'https://www.canva.com/design/DAGzHc6y5ho/YSE1gPugSj6HgSdPTyUaNQ/view', img: imgInstagramPmf },
       { ico: '📊', title: 'Zerodha: Product Strategy', desc: 'Market analysis & product strategy deep-dive.', tags: ['Market Analysis', 'Strategy'], link: 'https://www.canva.com/design/DAG0WQk_icc/1CpRrfeQny5awClTrFDOlg/view', img: imgZerodha },
     ],
@@ -160,7 +162,7 @@ export const FOLDERS: Record<FolderKey, FolderDef> = {
     name: 'Education', em: '🎓',
     f1: '#1d4a3e', f2: '#2f6e58', tab: '#3a8068',
     files: [
-      { ico: '🎓', title: 'M.Tech, Product Design & Management', sub: 'IIIT Hyderabad', desc: '2025 – 2027 · CGPA 8.61 · Dean\'s List Award', tags: ['Product', 'Design', "Dean's List"] },
+      { ico: '🎓', title: 'M.Tech, Product Design & Management', sub: 'IIIT Hyderabad', desc: "2025 – 2027 · CGPA 8.61. Selected for the Dean's List Award for top academic performance.", tags: ["Dean's List", 'Product', 'Design'] },
       { ico: '💻', title: 'B.Tech, Computer Science & Engineering', sub: 'Govt Engineering College, Thrissur', desc: '2019 – 2023 · CGPA 8.81', tags: ['CSE'] },
       { ico: '📚', title: 'AISSCE (PCMC) & AISSE', sub: 'Good Shepherd Public School, Thengana', desc: 'AISSCE 2019 · 96.2%   |   AISSE 2017 · CGPA 10', tags: ['School'] },
     ],

@@ -407,3 +407,11 @@ a{color:inherit}
   .dcard{animation:fadeIn var(--dur-3) ease both}
   *{transition-duration:1ms!important}
 }
+
+/* small pill on a project image (e.g. "Complete app") */
+.badge-pill{position:absolute;top:10px;left:10px;z-index:2;font-size:.62rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  padding:5px 10px;border-radius:99px;background:#fff;color:var(--navy);box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.g-more-projects{margin-top:18px}
+.g-honor{display:inline-flex;align-items:center;gap:7px;margin-top:6px;font-size:.74rem;font-weight:800;letter-spacing:.04em;
+  padding:5px 11px;border-radius:99px;color:#ffd6f1;border:1px solid rgba(240,105,200,.45);background:rgba(211,35,156,.16)}
+.g-honor span:first-child{color:var(--magenta-hi)}
