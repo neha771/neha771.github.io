@@ -40,6 +40,7 @@ const EDUCATION = [
     school: 'IIIT Hyderabad',
     what: 'M.Tech, Product Design & Management · 2025 – 2027 · CGPA 8.61',
     badge: "Dean's List Award · top academic performance",
+    note: 'Teaching Assistant, Business Fundamentals',
   },
   { school: 'GEC Thrissur', what: 'B.Tech, Computer Science · 2019 – 2023 · CGPA 8.81' },
 ];
@@ -232,6 +233,7 @@ export function Glance({ onJump }: GlanceProps) {
                     >
                       <strong>{e.school}</strong>
                       <span>{e.what}</span>
+                      {e.note && <span>{e.note}</span>}
                       {e.badge && (
                         <span className="g-honor">
                           <span aria-hidden="true">★</span> {e.badge}
